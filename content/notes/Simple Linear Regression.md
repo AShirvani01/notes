@@ -2,6 +2,7 @@
 title: Simple Linear Regression
 tags:
 ---
+---
 > [!abstract]- TL;DR
 Simply drawing a line of best fit through a group of data points is essentially all it is, without the mathematical rigor. By doing this, we assume that the relationship between predictor and response is linear, with all residuals being IID normal distributions centered around the trendline.
 
@@ -10,7 +11,7 @@ Simply drawing a line of best fit through a group of data points is essentially 
 
 Linear Regression is arguably the most fundamental type of statistical model that seeks to estimate a linear relationship between predictors and the response. Simple linear regression is a special case where the number of predictors $p=1$.
 ## Model Definition (in scalar form)
-
+---
 $$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n$$
 
 - $Y_i$ : the response/outcome/dependent variable (random)
@@ -37,6 +38,7 @@ $$\hat y_i := E[Y_i|X_i = x_i] = \beta_0 + \beta_1 x_i, \quad \forall \ i = 1, \
 which is also referred to as the fitted/predicted values.
 
 ## Estimation
+---
 Now all that's left is estimating the coefficients, which is commonly done using Ordinary Least Squares (OLS).
 
 $$\underset{\beta_0, \ \beta_1}{\arg\!\min} \sum_{i=1}^n \epsilon_i^2, \quad \epsilon_i^2 =  \left[y_i - (\beta_0 + \beta_1 x_i)\right]^2$$
@@ -48,6 +50,7 @@ $$\underset{\beta_0, \ \beta_1}{\arg\!\min} \sum_{i=1}^n \epsilon_i^2, \quad \ep
 
 
 ## Assumptions
+---
 You tend to hear/read about 4 major assumptions of Linear regression (in no particular order):
 1. Linearity ($E[\epsilon_i | X_i]=0$)
 2. Equal Variance in residuals/Homoscedasticity ($Var[\epsilon_i | X_i]=\sigma^2$)
