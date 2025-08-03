@@ -3,11 +3,13 @@ title: Simple Linear Regression
 tags:
 ---
 ---
-> [!abstract]- TL;DR
-Simply drawing a line of best fit through a group of data points is essentially all it is, without the mathematical rigor. By doing this, we assume that the relationship between predictor and response is linear, with all residuals being IID normal distributions centered around the trendline.
+
+>[!abstract]- Explain Like I'm 5
+>We draw a line through a bunch of points to try to see how a predictor $X$ and a response $Y$ are linearly related. The distance from the line to any one data point is called the error or residual since it is how far off we are from the true value. But how do we know which line fits best? Usually, we take each residual, square it, and add them all together to get the **R**esidual **S**um of **S**quares (**RSS**), which tells us how far off our line is *overall*. The best line would be the line with the ***lowest*** RSS. The actual process of finding the best line is called **O**rdinary **L**east **S**quares (**OLS**).
+>
 
 >[!faq]+ Motivation
->Given a group of data points with a response, $y_i$, and a predictor, $x_i$, it would be useful to  draw a simple trendline that fits through the data and gives a nice, interpretable approximation of the linear relationship between predictor and response.
+>Say we are given a dataset $\{x_i, y_i\}_{i=1}^n$ plotted on a scatterplot. Intuitively, we can see as x increases, y increases, but we can't really tell by how much. Linear Regression gives us a nice, quantifiable way of approximating the linear relationship between predictor and response.
 
 Linear Regression is arguably the most fundamental type of statistical model that seeks to estimate a linear relationship between predictors and the response. Simple linear regression is a special case where the number of predictors $p=1$.
 ## Model Definition (in scalar form)
@@ -39,9 +41,13 @@ which is also referred to as the fitted/predicted values.
 
 ## Estimation
 ---
-Now all that's left is estimating the coefficients, which is commonly done using Ordinary Least Squares (OLS).
+Now all that's left is estimating the model coefficients, which is commonly done using Ordinary Least Squares (OLS).
 
-$$\underset{\beta_0, \ \beta_1}{\arg\!\min} \sum_{i=1}^n \epsilon_i^2, \quad \epsilon_i^2 =  \left[y_i - (\beta_0 + \beta_1 x_i)\right]^2$$
+$$\beta_0^*, \beta_1^* = \underset{\beta_0, \ \beta_1}{\arg\!\min} \sum_{i=1}^n \epsilon_i^2, \quad \epsilon_i^2 =  \left[y_i - (\beta_0 + \beta_1 x_i)\right]^2 = [y_i-\hat y_i]^2$$
+The $\sum_{i=1}^n \epsilon_i^2$ term is commonly referred to as the **R**esidual **S**um of **S**quares (**RSS**). 
+
+>[!note] Putting RSS into perspective
+>In this case, we would refer to **RSS** as the [[Objective vs Cost vs Loss Function|cost function]], however in a ML context, you probably won't see **RSS** be used. Instead, you'll see **M**ean **S**quared **E**rror (**MSE**), which is simply $RSS/n$. Since dividing by a constant $n$ doesn't affect the optimization, MSE works effectively the same as RSS, but the distinction is worth noting.
 
 >[!tip] Why take the square?
 >- More heavily penalizes fitted values ($\hat y_i$) further away from the true values ($y_i$)
