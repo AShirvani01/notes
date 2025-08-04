@@ -2,7 +2,7 @@
 title: Objective vs Cost vs Loss Function
 tags:
 ---
-
+---
 >[!abstract]- Explain like I'm 5
 >Loss function is a part of a Cost function.
 >Cost function is a type of objective function.
@@ -20,7 +20,6 @@ The objective is the most general form of function that we want to optimize. It 
 - e.g. MLE (Objective function that's not a cost function)
 
 >[!example] Example with MSE
->
 > | Objective/Cost | Loss |
 > | ---- | -- |
 > | $\frac{1}{n}\sum_{i=1}^n \epsilon_i^2 + \lambda \left \|\boldsymbol \beta \right \|$ or $\frac{1}{n}\sum_{i=1}^n \epsilon_i^2$ | $\epsilon_i^2$ |

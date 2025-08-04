@@ -1,6 +1,7 @@
 ---
 title: Simple Linear Regression
 tags:
+  - model
 ---
 ---
 
@@ -17,7 +18,7 @@ Linear Regression is arguably the most fundamental type of statistical model tha
 $$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n$$
 
 - $Y_i$ : the response/outcome/dependent variable (random)
-- $X_i$ : the predictor/feature/independent variable (random)
+- $X_i$ : the predictor/covariate/feature/independent variable (random)
 - $\beta_0$ : the intercept (to be estimated by model)
 - $\beta_1$ : the slope (to be estimated by model)
 - $\epsilon_i$ : the error/residual (random)
@@ -44,6 +45,7 @@ which is also referred to as the fitted/predicted values.
 Now all that's left is estimating the model coefficients, which is commonly done using Ordinary Least Squares (OLS).
 
 $$\beta_0^*, \beta_1^* = \underset{\beta_0, \ \beta_1}{\arg\!\min} \sum_{i=1}^n \epsilon_i^2, \quad \epsilon_i^2 =  \left[y_i - (\beta_0 + \beta_1 x_i)\right]^2 = [y_i-\hat y_i]^2$$
+
 The $\sum_{i=1}^n \epsilon_i^2$ term is commonly referred to as the **R**esidual **S**um of **S**quares (**RSS**). 
 
 >[!note] Putting RSS into perspective
