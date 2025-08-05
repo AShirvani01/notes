@@ -4,7 +4,6 @@ tags:
   - model
 ---
 ---
-
 >[!abstract]- Explain Like I'm 5
 >We draw a line through a bunch of points to try to see how a predictor $X$ and a response $Y$ are linearly related. The distance from the line to any one data point is called the error or residual since it is how far off we are from the true value. But how do we know which line fits best? Usually, we take each residual, square it, and add them all together to get the **R**esidual **S**um of **S**quares (**RSS**), which tells us how far off our line is *overall*. The best line would be the line with the ***lowest*** RSS. The actual process of finding the best line is called **O**rdinary **L**east **S**quares (**OLS**).
 >
@@ -57,14 +56,14 @@ The $\sum_{i=1}^n \epsilon_i^2$ term is commonly referred to as the **R**esidual
 You tend to hear/read about 4 major assumptions of Linear regression (in no particular order):
 1. Linearity: $E[\epsilon_i | X_i]=0$
 2. Equal Variance in residuals/Homoscedasticity: $Var[\epsilon_i | X_i]=\sigma^2$
-3. Independence: $Cov(\epsilon_i, \epsilon_j)=0 \quad \forall \ i \neq j$
-4. Normality: $\epsilon_i | X_i \sim Normal$
+3. Independence: $Cov[\epsilon_i, \epsilon_j]=0 \quad \forall \ i \neq j$
+4. Normality: $\epsilon_i | X_i \sim Normal$ (only really affects our OLS estimator p-values and prediction intervals)
 
 *Notice how all 4 assumptions are covered by $\epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n$
 
 Other assumptions you might hear:
 
-5. Data is perfectly measurable/fixed (Usually from Bayesian profs since from a frequentist perspective, this is inherently already assumed)
+5. Data is perfectly measurable/fixed (Usually from Bayesian profs; from a frequentist perspective, this is inherently already assumed)
 6. No/low multicollinearity amongst predictors (N/A for simple linear regression)
 
 

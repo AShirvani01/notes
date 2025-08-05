@@ -11,7 +11,7 @@ The goal of this site is to document what I've learned over the years pertaining
 1. Help solidify my understanding of key concepts
 2. Make my notes more organized/easily accessible
 3. Allow others to learn from my mistakes
-4. Address [[content/index#Issues with Stats Classes|pet peeves]] I have with Stats classes
+4. Address pet peeves I have with Stats classes
 ---
 ## Issues with Stats Classes
 
@@ -19,4 +19,4 @@ The goal of this site is to document what I've learned over the years pertaining
 - We learn a lot of concepts in isolation and don't spend much time making the connections
 - Simple concepts made confusing by excessive technical language[^1]
 
-[^1]: While I'm not against using proper terminology, I do believe accompanying it with simple explanations that a 5 year old could understand would save learners a lot of time and frustration.
+[^1]: While I'm not against using proper terminology, I do believe accompanying it with simple explanations would save learners a lot of time and frustration.

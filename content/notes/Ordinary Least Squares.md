@@ -48,19 +48,24 @@ $$\boldsymbol{\hat\beta} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$$
 
 ## Bias and Variance of OLS Estimators
 We can show that OLS estimators are unbiased with variance inversely proportional to $n$.
-
+Assumptions used for...
+- Unbiasedness:
+	- $\text{Assumption 1: Linearity } (E[\boldsymbol\epsilon | \mathbf{X}]=\mathbf{0}$)
+- Variance:
+	- $Cov[\boldsymbol\epsilon | \mathbf{X}] = \sigma^2\mathbf{I_n} \begin{cases} \text{Assumption 2: Homoscedasticity} & (Var[\epsilon_i | X_i]=\sigma^2 \quad \forall \ i) \\ \text{Assumption 3: Independence} & (Cov[\epsilon_i, \epsilon_j]=0 \quad \forall \ i \neq j) \end{cases}$ 
 >[!note] Proof
+>### Bias
 $$
 \begin{align*}
 E[\boldsymbol{\hat\beta}] &= E[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}] \\
 &=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{y}] \\
 &= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{X}\boldsymbol{\beta} + \boldsymbol \epsilon] \\
 &= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{X} \boldsymbol \beta \\
-&= \boldsymbol \beta \\
+&= \boldsymbol \beta \quad \textcolor{red}{❤️} \\
 &\Longrightarrow \text{unbiased}
 \end{align*}
 $$
->
+>### Variance
 $$
 \begin{align*}
 Cov[\boldsymbol{\hat\beta}] &= Cov[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}] \\
@@ -68,7 +73,7 @@ Cov[\boldsymbol{\hat\beta}] &= Cov[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mat
 &= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T Cov[\boldsymbol \epsilon] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
 &= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \sigma^2\mathbf{I_n} \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
 &= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T  \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}
+&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1} \quad \textcolor{red}{❤️}
 \end{align*}
 $$
 >To see why $Var[\boldsymbol{\hat \beta}] \propto \frac{1}{n}$, we can write the inverse square matrix term as a sum of vectors:
