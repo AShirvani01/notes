@@ -10,7 +10,9 @@ tags:
 >
 
 >[!faq]+ Motivation
->Say we are given a dataset $\{x_i, y_i\}_{i=1}^n$ plotted on a scatterplot. Intuitively, we can see as x increases, y increases, but we can't really tell by how much. Linear Regression gives us a nice, quantifiable way of approximating the linear relationship between predictor and response.
+>Say we are given a dataset $\{x_i, y_i\}_{i=1}^n$ visualized on a scatterplot: 
+>![[Pasted image 20250804004027.png|500]]
+>Intuitively, we can see as x increases, y increases, but we can't really tell by how much. Linear Regression gives us a nice, quantifiable way of approximating the linear relationship between predictor and response.
 
 Linear Regression is arguably the most fundamental type of statistical model that seeks to estimate a linear relationship between predictors and the response. Simple linear regression is a special case where the number of predictors $p=1$.
 ## Model Definition (in scalar form)
@@ -27,12 +29,11 @@ $$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i | X_i \overset{iid}
 >Different ways of expressing simple linear regression
 >### Scalar
 >$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i,$[^1] $\quad \epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n$ 
->### Vector
->$\mathbf{y} = \beta_0 \mathcal{\mathbf{1_n}} + \beta_1 \mathbf{x} + \boldsymbol \epsilon, \quad \boldsymbol \epsilon | \mathbf{x} \sim MVN(\mathbf{0},\sigma^2 \mathbf{I_n}), \quad \mathbf{y} = \begin{bmatrix} Y_1 \\ \vdots \\ Y_n \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix} X_1 \\ \vdots \\ X_n \end{bmatrix}, \quad \boldsymbol \epsilon = \begin{bmatrix} \epsilon_1 \\ \vdots \\ \epsilon_n \end{bmatrix}$
->### Matrix
->$\mathbf{y} = \mathbf{X} \boldsymbol \beta + \boldsymbol \epsilon, \quad \boldsymbol \epsilon | \mathbf{X} \sim MVN(\mathbf{0},\sigma^2 \mathbf{I_n}), \quad \mathbf{y} = \begin{bmatrix} Y_1 \\ \vdots \\ Y_n \end{bmatrix}, \quad \textbf{X} = \begin{bmatrix} 1 & X_1 \\ \vdots & \vdots \\ 1 & X_n \end{bmatrix}, \quad \boldsymbol \beta = \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix}, \quad \boldsymbol \epsilon = \begin{bmatrix} \epsilon_1 \\ \vdots \\ \epsilon_n \end{bmatrix}$
+>### Vector/Matrix
+>$\mathbf{y} = \mathbf{X} \boldsymbol \beta + \boldsymbol \epsilon, \quad \boldsymbol \epsilon | \mathbf{X} \sim MVN(\mathbf{0},\sigma^2 \mathbf{I_n})$[^2]$, \quad \mathbf{y} = \begin{bmatrix} Y_1 \\ \vdots \\ Y_n \end{bmatrix}, \quad \textbf{X} = \begin{bmatrix} 1 & X_1 \\ \vdots & \vdots \\ 1 & X_n \end{bmatrix}, \quad \boldsymbol \beta = \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix}, \quad \boldsymbol \epsilon = \begin{bmatrix} \epsilon_1 \\ \vdots \\ \epsilon_n \end{bmatrix}$
 >
 >[^1]: You may recognize this as $y=mx+b$, with an added error term.
+>[^2]: You may hear this be called an **isotropic gaussian/normal***, since the covariance matrix is a scalar matrix (i.e. diagonals = some scalar, off-diagonals = $0$).
 
 Given a dataset $\{x_i, y_i\}^n_{i=1}$ we can use the realizations of $X_i$ and apply an expectation to 'remove' the error term from the equation to yield the following:
 
@@ -42,7 +43,7 @@ which is also referred to as the fitted/predicted values.
 
 ## Estimation
 ---
-Now all that's left is estimating the model coefficients, which is commonly done using Ordinary Least Squares (OLS).
+Now all that's left is estimating the model coefficients, which is commonly done using [[Ordinary Least Squares]] (OLS).
 
 $$\beta_0^*, \beta_1^* = \underset{\beta_0, \ \beta_1}{\arg\!\min} \sum_{i=1}^n \epsilon_i^2, \quad \epsilon_i^2 =  \left[y_i - (\beta_0 + \beta_1 x_i)\right]^2 = [y_i-\hat y_i]^2$$
 
@@ -51,19 +52,13 @@ The $\sum_{i=1}^n \epsilon_i^2$ term is commonly referred to as the **R**esidual
 >[!note] Putting RSS into perspective
 >In this case, we would refer to **RSS** as the [[Objective vs Cost vs Loss Function|cost function]], however in a ML context, you probably won't see **RSS** be used. Instead, you'll see **M**ean **S**quared **E**rror (**MSE**), which is simply $RSS/n$. Since dividing by a constant $n$ doesn't affect the optimization, MSE works effectively the same as RSS, but the distinction is worth noting.
 
->[!tip] Why take the square?
->- More heavily penalizes fitted values ($\hat y_i$) further away from the true values ($y_i$)
->- Prevents cancellation of positive and negative residuals
->- Easy to work with algebraically
-
-
 ## Assumptions
 ---
 You tend to hear/read about 4 major assumptions of Linear regression (in no particular order):
-1. Linearity ($E[\epsilon_i | X_i]=0$)
-2. Equal Variance in residuals/Homoscedasticity ($Var[\epsilon_i | X_i]=\sigma^2$)
-3. Independence ($Cov(\epsilon_i, \epsilon_j)=0 \quad \forall \ i \neq j$)
-4. Normality ($\epsilon_i | X_i \sim Normal$)
+1. Linearity: $E[\epsilon_i | X_i]=0$
+2. Equal Variance in residuals/Homoscedasticity: $Var[\epsilon_i | X_i]=\sigma^2$
+3. Independence: $Cov(\epsilon_i, \epsilon_j)=0 \quad \forall \ i \neq j$
+4. Normality: $\epsilon_i | X_i \sim Normal$
 
 *Notice how all 4 assumptions are covered by $\epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n$
 
