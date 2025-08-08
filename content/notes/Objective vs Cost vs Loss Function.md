@@ -3,7 +3,7 @@ title: Objective vs Cost vs Loss Function
 tags:
 ---
 ---
->[!abstract]- Explain like I'm 5
+>[!abstract]- Explain Like I'm 5
 >Loss function is a part of a Cost function.
 >Cost function is a type of objective function.
 

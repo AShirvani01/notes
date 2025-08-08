@@ -38,3 +38,4 @@ Cov[\boldsymbol{\tilde\beta}] &= Cov[\mathbf{Cy}] \\
 \end{align*}
 $$
 
+For more on why $\mathbf{DD}^T$ is positive semi-definite, see [[Types of Matrices#Positive Semi-definite|Types of Matrices]].
