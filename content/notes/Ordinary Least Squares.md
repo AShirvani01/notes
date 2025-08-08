@@ -8,6 +8,7 @@ tags:
 > We draw a line through a bunch of points to try to see how a predictor $X$ and a response $Y$ are linearly related. The distance from the line to any one data point is called the error or residual since it is how far off we are from the true value. But how do we know which line fits best? Usually, we take each residual, square it, and add them all together to get the **R**esidual **S**um of **S**quares (**RSS**), which tells us how far off our line is *overall*. The best line would be the line with the ***lowest*** RSS. The actual process of finding the best line is called **O**rdinary **L**east **S**quares (**OLS**).
 
 Ordinary Least Squares (OLS) is the standard method for estimating linear regression parameters. The [[Gauss-Markov Theorem]] proves it's the Best Linear Unbiased Estimator (BLUE) when assumptions hold. We define OLS as the following (in vector/matrix notation):
+
 $$\boldsymbol \beta^* = \underset{\boldsymbol \beta}{\arg\!\min} \ \| \boldsymbol{\epsilon} \|_2^2, \quad \boldsymbol\epsilon = \begin{bmatrix} \epsilon_0 \\ \vdots \\ \epsilon_n \end{bmatrix} = \mathbf{y} - \mathbf{X}\boldsymbol\beta$$
 
 You may interpret the optimal model parameter ($\boldsymbol{\beta}^*$) as the $\boldsymbol{\beta}$ that minimizes the Residual Sum of Squares (RSS). 
@@ -53,38 +54,37 @@ Assumptions used for...
 	- $\text{Assumption 1: Linearity } (E[\boldsymbol\epsilon | \mathbf{X}]=\mathbf{0}$)
 - Variance:
 	- $Cov[\boldsymbol\epsilon | \mathbf{X}] = \sigma^2\mathbf{I_n} \begin{cases} \text{Assumption 2: Homoscedasticity} & (Var[\epsilon_i | X_i]=\sigma^2 \quad \forall \ i) \\ \text{Assumption 3: Independence} & (Cov[\epsilon_i, \epsilon_j]=0 \quad \forall \ i \neq j) \end{cases}$ 
-### Bias
->[!note] Proof
->$$
-\begin{align*}
-E[\boldsymbol{\hat\beta}] &= E[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}] \\
-&=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{y}] \\
-&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{X}\boldsymbol{\beta} + \boldsymbol \epsilon] \\
-&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{X} \boldsymbol \beta && E[\boldsymbol\epsilon | \mathbf{X}]=0\\
-&= \boldsymbol \beta \quad \textcolor{red}{❤️} \\
-&\Longrightarrow \text{unbiased}
-\end{align*}
-$$
-### Variance
->[!note] Proof
->$$
-\begin{align*}
-Cov[\boldsymbol{\hat\beta}] &= Cov[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}] \\
-&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T Cov[\mathbf{y}] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T Cov[\boldsymbol \epsilon] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \sigma^2\mathbf{I_n} \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} && Cov[\boldsymbol\epsilon | \mathbf{X}] = \sigma^2\mathbf{I_n}\\
-&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T  \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1} \quad \textcolor{red}{❤️}
-\end{align*}
-$$
 
+>[!note] Proof
+>### Bias
+>$$
+>\begin{align*}
+>E[\boldsymbol{\hat\beta}] &= E[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}] \\
+>&=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{y}] \\
+>&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{X}\boldsymbol{\beta} + \boldsymbol \epsilon] \\
+>&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{X} \boldsymbol \beta && E[\boldsymbol\epsilon | \mathbf{X}]=0\\
+>&= \boldsymbol \beta \quad \textcolor{red}{❤️} \\
+>&\Longrightarrow \text{unbiased}
+>\end{align*}
+>$$
+>### Variance
+>$$
+>\begin{align*}
+>Cov[\boldsymbol{\hat\beta}] &= Cov[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}] \\
+>&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T Cov[\mathbf{y}] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
+>&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T Cov[\boldsymbol \epsilon] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
+>&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \sigma^2\mathbf{I_n} \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} && Cov[\boldsymbol\epsilon | \mathbf{X}] = \sigma^2\mathbf{I_n}\\
+>&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T  \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
+>&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1} \quad \textcolor{red}{❤️}
+>\end{align*}
+>$$
 >To see why $Var[\boldsymbol{\hat \beta}] \propto \frac{1}{n}$, we can write the inverse square matrix term as a sum of vectors:
 >$$\mathbf{X}^T\mathbf{X} = \sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T, \quad \mathbf{x}_i = \begin{bmatrix} 1 \\ x_{1i} \\ \vdots \\ x_{pi} \end{bmatrix}, \quad P = \text{\# of predictors}$$
 >
 >Notice how the larger $n$ is, the more $\mathbf{x}_i \mathbf{x}_i^T$'s are in the summation, in turn making $(\mathbf{X}^T\mathbf{X})^{-1}$ smaller in general. Another way of looking at it is through the Law of Large Numbers (LLN):
 >$$
-\begin{align*}
-\frac{1}{n}&\mathbf{X}^T\mathbf{X} = \frac{1}{n}\sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T \overset{p}{\rightarrow} E[\mathbf{x}_i \mathbf{x}_i^T] \\
-\Longrightarrow \quad&(\mathbf{X}^T\mathbf{X})^{-1} \approx \left(nE[\mathbf{x}_i \mathbf{x}_i^T]\right)^{-1} = \frac{1}{n}\left(E[\mathbf{x}_i \mathbf{x}_i^T]\right)^{-1}
-\end{align*}
-$$
+>\begin{align*}
+>\frac{1}{n}&\mathbf{X}^T\mathbf{X} = \frac{1}{n}\sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T \overset{p}{\rightarrow} E[\mathbf{x}_i \mathbf{x}_i^T] \\
+>\Longrightarrow \quad&(\mathbf{X}^T\mathbf{X})^{-1} \approx \left(nE[\mathbf{x}_i \mathbf{x}_i^T]\right)^{-1} = \frac{1}{n}\left(E[\mathbf{x}_i \mathbf{x}_i^T]\right)^{-1}
+>\end{align*}
+>$$

@@ -4,13 +4,19 @@ tags:
   - linear-algebra
 ---
 ---
-An eigenvector is a non-zero vector ($\mathbf{v}$) that only changes in magnitude when a linear transformation $\mathcal{T}: \mathbb{R}^n \rightarrow \mathbb{R}^n$ is applied (i.e. after the transformation, the direction should still be the same). The scalar factor by which the magnitude changes is called the eigenvalue ($\lambda$). 
+An **eigenvector** is a non-zero vector ($\mathbf{v}$) that only changes in magnitude when a linear transformation $\mathcal{T}: \mathbb{R}^n \rightarrow \mathbb{R}^n$ is applied (i.e. after the transformation, the direction should still be the same). The scalar factor by which the magnitude changes is called the **eigenvalue** ($\lambda$). Each eigenvector corresponds to a particular eigenvalue, although the eigenvalues may happen to be the same value.
 
 $$\mathbf{v}=\text{Eigenvector} \Longleftrightarrow \mathcal{T}(\mathbf{v})=\lambda\mathbf{v} \Longleftrightarrow \mathbf{Mv}=\lambda\mathbf{v}, \quad \mathbf{M}= \text{square matrix }$$
 
-Each eigenvector corresponds to a particular eigenvalue, although the eigenvalues may happen to be the same value.
 >[!tip] Note
 Eigenvectors ***can't*** be $\mathbf{0}$, but eigenvalues ***can*** be 0.
+
+ The **eigenspace** refers to the set of all eigenvectors that correspond to the eigenvalue $\lambda$. The **spectrum** refers to the set of all eigenvalues of the matrix $\mathbf{M}$.
+
+>[!danger]- Notation
+>- We say that $\mathbf{v}$ is an eigenvector of $\mathbf{M}$, with $\lambda$ as the eigenvalue(s) of $\mathbf{M}$. Eigenvectors themselves don't have eigenvalues. 
+>- You may see eigenspace denoted as $E_\lambda$, $E(\lambda)$, or $E_\mathbf{M}(\lambda)$
+>- Spectrum is typically denoted as $\sigma(\mathbf{M})$
 
 >[!Note] Solving for eigenvalues/eigenvectors
 >$$
@@ -32,12 +38,22 @@ Eigenvectors ***can't*** be $\mathbf{0}$, but eigenvalues ***can*** be 0.
 >\text{det}\left(\begin{bmatrix} 2&0 \\ 0&1 \end{bmatrix}-\lambda\mathbf{I}\right) &= \mathbf{0} \\
 >\begin{vmatrix} 2-\lambda&0 \\ 0&1-\lambda \end{vmatrix} &= \mathbf{0} \\
 >(2-\lambda)(1-\lambda) &= \mathbf{0} && \leftarrow \text{Characteristic equation}\\
->\lambda_0 &= 2 \\
->\lambda_1 &= 1
+>\lambda_1 &= 1 \\
+>\lambda_2 &= 2 \\
+>\sigma(\mathbf{M}) &= \{1,2\} && \leftarrow \text{Spectrum}
 >\end{align*}
 >$$
->To find the eigenvalue, we sub in the previously found lambda
->- Sub $\lambda_0=2$:
+>To find the eigenspace/eigenvectors, we sub in the previously found lambda
+>- Sub $\lambda_1=1$:
+>$$
+>\begin{align*}
+>\left(\begin{bmatrix} 2&0 \\ 0&1 \end{bmatrix}-\mathbf{I}\right)\mathbf{v} &= \mathbf{0} \\
+>\begin{bmatrix} 1&0 \\ 0&0 \end{bmatrix}\begin{bmatrix}v_1 \\ v_2 \end{bmatrix} &= \mathbf{0} \\ \\
+>\Longrightarrow v_1 = 0
+>\end{align*}
+>$$
+>Since $v_2$ is unconstrained, the eigenspace for $\lambda_1$ ($E_{\lambda_1}$) is the set of eigenvectors $\mathbf{v} = \begin{bmatrix} 0 \\ v_2 \end{bmatrix}$ where $v_2 \in \mathbb{R}$.
+>- Sub $\lambda_2=2$:
 >$$
 >\begin{align*}
 >\left(\begin{bmatrix} 2&0 \\ 0&1 \end{bmatrix}-2\mathbf{I}\right)\mathbf{v} &= \mathbf{0} \\
@@ -45,14 +61,5 @@ Eigenvectors ***can't*** be $\mathbf{0}$, but eigenvalues ***can*** be 0.
 >\Longrightarrow v_2 = 0
 >\end{align*}
 >$$
->Since $v_1$ is unconstrained, we can set it equal to 1 for simplicity, leaving us with $\mathbf{v} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$.
+>Since $v_1$ is unconstrained, the eigenspace for $\lambda_2$ ($E_{\lambda_2}$) is the set of eigenvectors $\mathbf{v} = \begin{bmatrix} v_1 \\ 0 \end{bmatrix}$ where $v_1 \in \mathbb{R}$.
 
->[!danger] Notation
->We say that $\mathbf{v}$ is an eigenvector of $\mathbf{T}$, with $\lambda$ as the eigenvalue(s) of $\mathbf{T}$. Eigenvectors themselves don't have eigenvalues. 
->- Eigenspace: the set of all eigenvectors that correspond to the eigenvalue $\lambda$.
->- Determinants (i.e. $\text{det}(\mathbf{M}-\lambda\mathbf{I})$) may also be written with vertical lines (i.e. $\begin{vmatrix}\mathbf{M}-\lambda\mathbf{I}\end{vmatrix}$)
-
-
->[!tip] Geometric interpretation
->Eigenvectors are the **axes** that remain invariant under a linear transformation $\mathcal{T}$ (only scaled by $\lambda$).
->![[Pasted image 20250806162042.png]]

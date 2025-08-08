@@ -24,18 +24,19 @@ The Gauss-Markov theorem proves that the OLS estimator is the Best Linear Unbias
 >$$
 Now, we can compute the covariance
 >$$
-\begin{align*}
-Cov[\boldsymbol{\tilde\beta}] &= Cov[\mathbf{Cy}] \\
-&= \mathbf{C} Cov[\mathbf{y}] \mathbf{C}^T \\
-&= \mathbf{C} \sigma^2 \mathbf{I_n} \mathbf{C}^T && Cov[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{I_n} \\
-&= \sigma^2 \mathbf{CC}^T \\
-&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{D} \right] \left[ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{D} \right]^T \\
-&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{D} \right] \left[ \mathbf{X} (\mathbf{X}^T\mathbf{X})^{-1}  + \mathbf{D}^T \right] \\
-&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{D}^T + \mathbf{D}\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} + \mathbf{DD}^T \right] \\
-&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} + \mathbf{DD}^T \right] && \mathbf{X}^T\mathbf{D}^T = \mathbf{DX} = \mathbf{0}_{p\times p} \\
-&= Cov[\boldsymbol{\hat\beta}_{OLS}] + \sigma^2 \mathbf{DD}^T \\
-&\geq Cov[\boldsymbol{\hat\beta}_{OLS}] \quad \textcolor{red}{❤️} && \mathbf{DD}^T = \text{positive semi-definite}
-\end{align*}
-$$
+>\begin{align*}
+>Cov[\boldsymbol{\tilde\beta}] &= Cov[\mathbf{Cy}] \\
+>&= \mathbf{C} Cov[\mathbf{y}] \mathbf{C}^T \\
+>&= \mathbf{C} \sigma^2 \mathbf{I_n} \mathbf{C}^T && Cov[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{I_n} \\
+>&= \sigma^2 \mathbf{CC}^T \\
+>&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{D} \right] \left[ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{D} \right]^T \\
+>&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{D} \right] \left[ \mathbf{X} (\mathbf{X}^T\mathbf{X})^{-1}  + \mathbf{D}^T \right] \\
+>&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{D}^T + \mathbf{D}\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} + \mathbf{DD}^T \right] \\
+>&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} + \mathbf{DD}^T \right] && \mathbf{X}^T\mathbf{D}^T = \mathbf{DX} = \mathbf{0}_{p\times p} \\
+>&= Cov[\boldsymbol{\hat\beta}_{OLS}] + \sigma^2 \mathbf{DD}^T \\
+>&\geq Cov[\boldsymbol{\hat\beta}_{OLS}] \quad \textcolor{red}{❤️} && \mathbf{DD}^T = \text{positive semi-definite}
+>\end{align*}
+>$$
+
 
 For more on why $\mathbf{DD}^T$ is positive semi-definite, see [[Types of Matrices#Positive Semi-definite|Types of Matrices]].

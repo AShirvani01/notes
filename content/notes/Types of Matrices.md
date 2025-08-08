@@ -22,6 +22,6 @@ $$\mathbf{M} \text{ is positive semi-definite} \Longleftrightarrow \mathbf{M} \t
 Definition: Symmetric matrix with positive [[Eigenvalues and Eigenvectors|eigenvalues]].
 $$\mathbf{M} \text{ is positive definite} \Longleftrightarrow \mathbf{M} \text{ is symmetric}, \lambda\gt0 \Longleftrightarrow \mathbf{v}^T\mathbf{Mv}\gt0, \text{ for any non-zero vector } \mathbf{v}$$
 ### Singular
-Definition: Square matrix thats not invertible
+Definition: Square matrix that's not invertible
 >[!tip]-
 >![[Pasted image 20250806182135.png]]

@@ -32,7 +32,7 @@ $$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i | X_i \overset{iid}
 >$\mathbf{y} = \mathbf{X} \boldsymbol \beta + \boldsymbol \epsilon, \quad \boldsymbol \epsilon | \mathbf{X} \sim MVN(\mathbf{0},\sigma^2 \mathbf{I_n})$[^2]$, \quad \mathbf{y} = \begin{bmatrix} Y_1 \\ \vdots \\ Y_n \end{bmatrix}, \quad \textbf{X} = \begin{bmatrix} 1 & X_1 \\ \vdots & \vdots \\ 1 & X_n \end{bmatrix}, \quad \boldsymbol \beta = \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix}, \quad \boldsymbol \epsilon = \begin{bmatrix} \epsilon_1 \\ \vdots \\ \epsilon_n \end{bmatrix}$
 >
 >[^1]: You may recognize this as $y=mx+b$, with an added error term.
->[^2]: You may hear this be called an **isotropic gaussian/normal***, since the covariance matrix is a scalar matrix (i.e. diagonals = some scalar, off-diagonals = $0$).
+>[^2]: You may hear this be called an **isotropic gaussian/normal**, since the covariance matrix is a scalar matrix (i.e. diagonals = some scalar, off-diagonals = $0$).
 
 Given a dataset $\{x_i, y_i\}^n_{i=1}$ we can use the realizations of $X_i$ and apply an expectation to 'remove' the error term from the equation to yield the following:
 
