@@ -22,7 +22,7 @@ The Gauss-Markov theorem proves that the OLS estimator is the Best Linear Unbias
 >&\Longrightarrow \text{Unbiased @ }\mathbf{DX} = \mathbf{0}_{p\times p} 
 >\end{align*}
 >$$
-Now, we can compute the covariance
+>Now, we can compute the covariance
 >$$
 >\begin{align*}
 >Cov[\boldsymbol{\tilde\beta}] &= Cov[\mathbf{Cy}] \\

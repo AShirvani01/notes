@@ -9,7 +9,7 @@ An **eigenvector** is a non-zero vector ($\mathbf{v}$) that only changes in magn
 $$\mathbf{v}=\text{Eigenvector} \Longleftrightarrow \mathcal{T}(\mathbf{v})=\lambda\mathbf{v} \Longleftrightarrow \mathbf{Mv}=\lambda\mathbf{v}, \quad \mathbf{M}= \text{square matrix }$$
 
 >[!tip] Note
-Eigenvectors ***can't*** be $\mathbf{0}$, but eigenvalues ***can*** be 0.
+>Eigenvectors ***can't*** be $\mathbf{0}$, but eigenvalues ***can*** be 0.
 
  The **eigenspace** refers to the set of all eigenvectors that correspond to the eigenvalue $\lambda$. The **spectrum** refers to the set of all eigenvalues of the matrix $\mathbf{M}$.
 
