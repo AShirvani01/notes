@@ -18,6 +18,7 @@ You may interpret the optimal model parameter ($\boldsymbol{\beta}^*$) as the $\
 >- $\boldsymbol{\beta^*}$ : star more typically used in ML to represent hypothetical, optimal parameters
 >- $\boldsymbol{\hat \beta}$ : hat favoured in Stats to represent any sample estimate of the true parameter
 >	- I like to reserve the star for optimization problems (i.e. $\arg\!\min$) and hat for the rest
+>- In ML, you'll tend to see the parameter denoted as $\mathbf{w}$ for 'weight' instead of $\boldsymbol \beta$
 >- For clarity, you may see the the estimation process as a subscript (i.e. $\boldsymbol \beta^*_{OLS}$), however in my experience most of the time it's omitted
 >- Different ways of writing the Residual Sum of Squares (RSS):
 >$$\|\boldsymbol \epsilon \|_2^2 = \boldsymbol{\epsilon}^T \boldsymbol{\epsilon} = \sum_{i=1}^n \epsilon_i^2 = \textbf{RSS}$$
@@ -63,7 +64,7 @@ Assumptions used for...
 >&=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{y}] \\
 >&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{X}\boldsymbol{\beta} + \boldsymbol \epsilon] \\
 >&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{X} \boldsymbol \beta && E[\boldsymbol\epsilon | \mathbf{X}]=0\\
->&= \boldsymbol \beta \quad \textcolor{red}{❤️} \\
+>&= \boldsymbol \beta \quad \color{red}{❤️} \\
 >&\Longrightarrow \text{unbiased}
 >\end{align*}
 >$$
@@ -75,7 +76,7 @@ Assumptions used for...
 >&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T Cov[\boldsymbol \epsilon] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
 >&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \sigma^2\mathbf{I_n} \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} && Cov[\boldsymbol\epsilon | \mathbf{X}] = \sigma^2\mathbf{I_n}\\
 >&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T  \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
->&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1} \quad \textcolor{red}{❤️}
+>&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1} \quad \color{red}{❤️}
 >\end{align*}
 >$$
 >To see why $Var[\boldsymbol{\hat \beta}] \propto \frac{1}{n}$, we can write the inverse square matrix term as a sum of vectors:
