@@ -64,7 +64,7 @@ Assumptions used for...
 >&=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{y}] \\
 >&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T E[\mathbf{X}\boldsymbol{\beta} + \boldsymbol \epsilon] \\
 >&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{X} \boldsymbol \beta && E[\boldsymbol\epsilon | \mathbf{X}]=0\\
->&= \boldsymbol \beta \quad \color{red}{❤️} \\
+>&= \boldsymbol \beta \quad \text{💖} \\
 >&\Longrightarrow \text{unbiased}
 >\end{align*}
 >$$
@@ -76,7 +76,7 @@ Assumptions used for...
 >&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T Cov[\boldsymbol \epsilon] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
 >&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \sigma^2\mathbf{I_n} \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} && Cov[\boldsymbol\epsilon | \mathbf{X}] = \sigma^2\mathbf{I_n}\\
 >&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T  \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
->&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1} \quad \color{red}{❤️}
+>&= \sigma^2(\mathbf{X}^T\mathbf{X})^{-1} \quad \text{💖}
 >\end{align*}
 >$$
 >To see why $Var[\boldsymbol{\hat \beta}] \propto \frac{1}{n}$, we can write the inverse square matrix term as a sum of vectors:

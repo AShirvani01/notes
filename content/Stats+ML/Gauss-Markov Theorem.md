@@ -34,7 +34,7 @@ The Gauss-Markov theorem proves that the OLS estimator is the Best Linear Unbias
 >&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{D}^T + \mathbf{D}\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} + \mathbf{DD}^T \right] \\
 >&= \sigma^2 \left[ (\mathbf{X}^T\mathbf{X})^{-1} + \mathbf{DD}^T \right] && \mathbf{X}^T\mathbf{D}^T = \mathbf{DX} = \mathbf{0}_{p\times p} \\
 >&= Cov[\boldsymbol{\hat\beta}_{OLS}] + \sigma^2 \mathbf{DD}^T \\
->&\geq Cov[\boldsymbol{\hat\beta}_{OLS}] \quad \color{red}{❤️} && \mathbf{DD}^T = \text{positive semi-definite}
+>&\geq Cov[\boldsymbol{\hat\beta}_{OLS}] \quad \text{💖} && \mathbf{DD}^T = \text{positive semi-definite}
 >\end{align*}
 >$$
 

@@ -32,5 +32,5 @@ MSE can be shown to be a summation of bias and variance
 >>\end{align*}
 >>$$
 >
->$\therefore MSE_{test} = \text{Bias}^2 + \text{Variance} + \sigma^2$
+>$\therefore MSE_{test} = \text{Bias}^2 + \text{Variance} + \sigma^2 \quad \text{💖}$
 
