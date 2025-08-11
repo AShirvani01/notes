@@ -4,8 +4,8 @@ tags:
 ---
 ---
 When it comes to predictive models, there are generally 2 sources of error: bias and variance. Ideally, we want to minimize both, but in reality, there is some tradeoff between the two (i.e. at some point, decreasing bias increases variance, and vice versa). For this reason, choosing an unbiased estimator may not always yield the best performance.
->[!tip] Visual
->![[Pasted image 20250810115524.png]]
+>[!quote]
+>
 
 
 ### Bias-Variance Decomposition with MSE
