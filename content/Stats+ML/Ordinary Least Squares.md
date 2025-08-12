@@ -24,7 +24,7 @@ You may interpret the optimal model parameter ($\boldsymbol{\beta}^*$) as the $\
 >$$\|\boldsymbol \epsilon \|_2^2 = \boldsymbol{\epsilon}^T \boldsymbol{\epsilon} = \sum_{i=1}^n \epsilon_i^2 = \textbf{RSS}$$
 >- The double bar ($\| \|$)around the $\boldsymbol\epsilon$ denotes a [norm](https://en.wikipedia.org/wiki/Norm_(mathematics)), with the subscript $_2$ specifying that it's an L2 norm (aka Euclidean norm), and the superscript $^2$ being an ordinary square. This notation is fairly common for LASSO and RIDGE regularization terms.
 
->[!tip] Why take the square?
+>[!faq] Why take the square?
 >- More heavily penalizes fitted values ($\hat y_i$) further away from the true values ($y_i$)
 >- Prevents cancellation of positive and negative residuals
 >- Easy to work with algebraically

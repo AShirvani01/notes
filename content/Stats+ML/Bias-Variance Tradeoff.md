@@ -21,7 +21,7 @@ MSE can be shown to be a summation of bias and variance
 >&= E\left[(f(x)-\hat f(x))^2\right] + \sigma^2  && E[\epsilon]=0, \ E\left[ \epsilon^2 \right] = \sigma^2\\
 >\end{align*}
 >$$
->>[!tip]- $E\left[(f(x)-\hat f(x))^2\right] = \text{Bias}^2 + \text{Variance}$
+>>[!tip] $E\left[(f(x)-\hat f(x))^2\right] = \text{Bias}^2 + \text{Variance}$
 >>$$
 >>\begin{align*}
 >>E\left[(f(x)-\hat f(x))^2\right] &= E\left[(f(x) - E[\hat f(x)] + E[\hat f(x)]-\hat f(x))^2\right] \\
