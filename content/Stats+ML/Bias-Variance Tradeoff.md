@@ -13,8 +13,6 @@ When it comes to predictive models, there are 2 sources of reducible error: **Bi
 Ideally, we want to minimize both, but in reality, there is some tradeoff between the two (i.e. decreasing bias increases variance, and vice versa). Instead, we minimize the total error, which tends to be somewhere in the middle in terms of model complexity (See [[Bias-Variance Tradeoff#^ef7f36|Figure]] below). For this reason, choosing an unbiased estimator may not always yield the best performance.
 
 >[!tip] Bias and Variance as a function of Model Complexity
->**Overfit**: Right of optimum
->**Underfit**: Left of optimum
 ![[Bias-Variance.png]]
 
 ^ef7f36
