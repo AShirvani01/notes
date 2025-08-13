@@ -28,4 +28,4 @@ $$\mathbf{M} \text{ is positive definite} \Longleftrightarrow \mathbf{M} \text{ 
 ### Singular
 Definition: Square matrix that's not invertible
 >[!tip]-
->![[Pasted image 20250806182135.png]]
+>![[SIngular matrix reddit.png]]

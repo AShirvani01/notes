@@ -20,8 +20,9 @@ $$Var(\hat \theta) \ge \frac{1}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;
 > $$I(\theta) \uparrow \Longleftrightarrow \text{Sharper peak on log likelihood} \Longleftrightarrow \text{More confident estimate} \Longleftrightarrow \text{CRLB} \downarrow$$
 
 ### Biased
-If we are dealing with a biased estimator (i.e. $E[\hat \theta]=\psi(\theta) \ne \theta$), we generalize the CRLB as the following:
-$$Var(\hat \theta) \ge \frac{|\psi'(\theta)|^2}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;\theta)}\left[\left(\frac{\partial \ln p(X;\theta)}{\partial \theta}\right)^2\right] = -nE_{X\sim p(X;\theta)}\left[\frac{\partial^2 \ln p(X;\theta)}{\partial \theta^2}\right]   $$
+If we are dealing with a biased estimator (i.e. $E[\hat \theta]=\theta + b(\theta)$), we generalize the CRLB as the following:
+
+$$Var(\hat \theta) \ge \frac{|1+b'(\theta)|^2}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;\theta)}\left[\left(\frac{\partial \ln p(X;\theta)}{\partial \theta}\right)^2\right] = -nE_{X\sim p(X;\theta)}\left[\frac{\partial^2 \ln p(X;\theta)}{\partial \theta^2}\right]   $$
 
 >[!tip] Note
 >- Notice how $\psi(\theta)=\theta$ reduces down to the unbiased case
@@ -31,15 +32,18 @@ $$Var(\hat \theta) \ge \frac{|\psi'(\theta)|^2}{I_n(\theta)}, \quad I_n(\theta) 
 >[!note] Proof
 >**Goal**: Show that...
 >- for any unbiased estimator $\hat \theta (X)$, $Var(\hat \theta) \ge \frac{1}{I_n(\theta)}$
->- for any biased estimator $\hat \theta (X)$, $Var(\hat \theta) \ge \frac{|\psi'(\theta)|^2}{I_n(\theta)}$
+>- for any biased estimator $\hat \theta (X)$, $Var(\hat \theta) \ge \frac{|1+b'(\theta)|^2}{I_n(\theta)}$
 >
 > Let the score function $S(X;\theta) := \frac{\partial}{\partial \theta}\ln p(X;\theta) = \frac{1}{p(X;\theta)} \frac{\partial}{\partial \theta} p(X;\theta)$
+> 
+> **Regularity condition**: $S(X;\theta) = I(\theta)(\hat \theta(X) - \theta), \quad \forall \ \theta$
+> 
 > $$
 > \begin{align*}
 > E[S(X;\theta)] &= \int S(X;\theta) \cdot p(X;\theta) dX \\
 > &= \int \frac{1}{p(X;\theta)} \frac{\partial}{\partial \theta} p(X;\theta)\cdot p(X;\theta) dX \\
 > &= \int \frac{\partial}{\partial \theta}\cdot p(X;\theta) dX \\
-> &= \frac{\partial}{\partial \theta} \int p(X;\theta) dX && \text{X support must not depend on } \theta \\
+> &= \frac{\partial}{\partial \theta} \int p(X;\theta) dX && \leftarrow \text{regularity condition must be true} \\
 > &= \frac{\partial}{\partial \theta} 1\\
 > &= 0
 > \end{align*}
@@ -52,18 +56,19 @@ $$Var(\hat \theta) \ge \frac{|\psi'(\theta)|^2}{I_n(\theta)}, \quad I_n(\theta) 
 > &= \int \hat \theta(X) \cdot \frac{1}{p(X;\theta)} \frac{\partial}{\partial \theta} p(X;\theta) \cdot p(X;\theta)dX \\
 > &= \int \hat \theta(X) \cdot \frac{\partial}{\partial \theta} p(X;\theta)dX \\
 > &= \frac{\partial}{\partial \theta} \int \hat \theta(X) \cdot  p(X;\theta)dX \\
-> &= \frac{\partial}{\partial \theta} E[\hat \theta(X)] && E[\hat \theta] = \begin{cases} \theta & \text{if unbiased} \\ \psi(\theta) & \text{if biased} \end{cases} \\
-> &= \begin{cases} 1 & \text{if unbiased} \\ \psi'(\theta) & \text{if biased} \end{cases}
+> &= \frac{\partial}{\partial \theta} E[\hat \theta(X)] && E[\hat \theta] = \begin{cases} \theta & \text{if unbiased} \\ \theta+b(\theta) & \text{if biased} \end{cases} \\
+> &= \begin{cases} 1 & \text{if unbiased} \\ 1+b'(\theta) & \text{if biased} \end{cases}
 > \end{align*}
 > $$
 > **Using the [Cauchy-Schwarz Inequality](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality#Probability_theory)...**
+> 
 > $$Var[\hat \theta(X)]\cdot Var[S(X;\theta)] \ge |Cov[\hat \theta(X), S(X; \theta)]|^2$$
 > $$
 > \begin{align*}
 > &\text{Unbiased} && \text{Biased} \\
-> &Var[\hat \theta(X)]\cdot Var[S(X;\theta)] \ge |1|^2 && Var[\hat \theta(X)]\cdot Var[S(X;\theta)] \ge |\psi'(\theta)|^2 \\
-> &Var[\hat \theta(X)] \ge \frac{1}{Var[S(X;\theta)]} && Var[\hat \theta(X)] \ge \frac{|\psi'(\theta)|^2}{Var[S(X;\theta)]} \\
-> &Var[\hat \theta(X)] \ge \frac{1}{I_n(\theta)} \quad 💖 && Var[\hat \theta(X)] \ge \frac{|\psi'(\theta)|^2}{I_n(\theta)} \quad 💖
+> &Var[\hat \theta(X)]\cdot Var[S(X;\theta)] \ge |1|^2 && Var[\hat \theta(X)]\cdot Var[S(X;\theta)] \ge |1+b'(\theta)|^2 \\
+> &Var[\hat \theta(X)] \ge \frac{1}{Var[S(X;\theta)]} && Var[\hat \theta(X)] \ge \frac{|1+b'(\theta)|^2}{Var[S(X;\theta)]} \\
+> &Var[\hat \theta(X)] \ge \frac{1}{I_n(\theta)} \quad 💖 && Var[\hat \theta(X)] \ge \frac{|1+b'(\theta)|^2}{I_n(\theta)} \quad 💖
 > \end{align*}
 > $$
 
