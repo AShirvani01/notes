@@ -22,26 +22,26 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
 
 PageTitle.css = `
 .page-title {
+  display: flex;
+  flex-direction: column;
   font-size: 1.75rem;
   margin: 0;
   font-family: var(--titleFont);
 }
 .logo {
-  max-height: 650px;
-  min-height: 50px;
-  max-width: 240px;
-  min-width: 50px;
+  height: 2rem;
+  width: auto;
 }
 @media (max-width: 768px) {
   .page-title {
     flex-direction: row;
     font-size: 1rem;
-    margin: 0;
-    font-family: var(--titleFont);
+    align-items: center;
   }
   
   .logo {
-    height: 1rem;
+    height: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
 `
