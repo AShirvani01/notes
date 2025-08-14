@@ -10,7 +10,8 @@ tags:
 
 >[!faq]+ Motivation
 >Say we are given a dataset $\{x_i, y_i\}_{i=1}^n$ visualized on a scatterplot: 
->![[Simple linear regression plot.png|500]]
+>![[Simple linear regression plot.png|500]] 
+>
 >Intuitively, we can see as x increases, y increases, but we can't really tell by how much. Linear Regression gives us a nice, quantifiable way of approximating the linear relationship between predictor and response.
 
 Linear Regression is arguably the most fundamental type of statistical model that seeks to estimate a linear relationship between predictors and the response. Simple linear regression is a special case where the number of predictors $p=1$.

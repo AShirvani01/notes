@@ -10,6 +10,7 @@ When it comes to predictive models, there are 2 sources of reducible error: **Bi
 - **Variance**: how much predictions fluctuate across different datasets
 	- High variance when a model is too complex and captures noise as if it were informative patterns in the data, leading to *overfitting*.
 	- Low Bias, High Variance models: k-Nearest Neighbours with small k, Deep Decision Trees, Deep Neural Networks
+
 Ideally, we want to minimize both, but in reality, there is some tradeoff between the two (i.e. decreasing bias increases variance, and vice versa). Instead, we minimize the total error, which tends to be somewhere in the middle in terms of model complexity (See [[Bias-Variance Tradeoff#^ef7f36|Figure]] below). For this reason, choosing an unbiased estimator may not always yield the best performance.
 
 >[!tip] Bias and Variance as a function of Model Complexity

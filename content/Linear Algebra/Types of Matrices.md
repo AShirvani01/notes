@@ -6,6 +6,7 @@ tags:
 ---
 ### Symmetric
 Definition: Square matrix that remains the same when transposed.
+
 $$\mathbf{M} \text{ is symmetric}\Longleftrightarrow \mathbf{M}^T=\mathbf{M} \Longleftrightarrow \mathbf{M}_{ij}=\mathbf{M}_{ji} \quad \forall \ i,j$$
 ### Negative Definite
 Definition: Symmetric matrix with negative [[Eigenvalues and Eigenvectors|eigenvalues]].
