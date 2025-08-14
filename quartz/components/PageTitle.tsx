@@ -35,12 +35,13 @@ PageTitle.css = `
 @media (max-width: 768px) {
   .page-title {
     flex-direction: row;
-    justify-content: center;
-    gap: 0.75rem;
+    font-size: 1rem;
+    margin: 0;
+    font-family: var(--titleFont);
   }
   
   .logo {
-    height: 1.5rem;
+    height: 1rem;
   }
 }
 `
