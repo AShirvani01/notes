@@ -2,6 +2,7 @@
 title: Eigenvalues and Eigenvectors
 tags:
   - linear-algebra
+created: 2025-08-08
 ---
 ---
 An **eigenvector** is a non-zero vector ($\mathbf{v}$) that only changes in magnitude when a linear transformation $\mathcal{T}: \mathbb{R}^n \rightarrow \mathbb{R}^n$ is applied (i.e. after the transformation, the direction should still be the same). The scalar factor by which the magnitude changes is called the **eigenvalue** ($\lambda$). Each eigenvector corresponds to a particular eigenvalue, although the eigenvalues may happen to be the same value.

@@ -1,6 +1,7 @@
 ---
 title: Bias-Variance Tradeoff
-tags:
+tags: 
+created: 2025-08-11
 ---
 ---
 When it comes to predictive models, there are 2 sources of reducible error: **Bias** and **Variance**.

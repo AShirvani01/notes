@@ -1,6 +1,7 @@
 ---
 title: Cramer-Rao Lower Bound
-tags:
+tags: 
+created: 2025-08-11
 ---
 ---
 ### Unbiased
@@ -17,6 +18,7 @@ $$Var(\hat \theta) \ge \frac{1}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;
 
 >[!tip] Interpretation
 >Fisher Information measures the curvature of the log-likelihood function (which you may be able to tell from the expectation of the second derivative), so we can interpret the relationship between Fisher Information and the CRLB as the following:
+> 
 > $$I(\theta) \uparrow \Longleftrightarrow \text{Sharper peak on log likelihood} \Longleftrightarrow \text{More confident estimate} \Longleftrightarrow \text{CRLB} \downarrow$$
 
 ### Biased

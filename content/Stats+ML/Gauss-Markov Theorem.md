@@ -1,6 +1,7 @@
 ---
 title: Gauss-Markov Theorem
-tags:
+tags: 
+created: 2025-08-05
 ---
 ---
 The Gauss-Markov theorem proves that the OLS estimator is the Best Linear Unbiased Estimator (BLUE; i.e. lowest possible variance for a linear, unbiased estimator). 

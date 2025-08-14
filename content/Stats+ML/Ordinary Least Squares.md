@@ -2,6 +2,7 @@
 title: Ordinary Least Squares
 tags:
   - estimation
+created: 2025-08-03
 ---
 ---
 >[!abstract]- Explain Like I'm 5
@@ -80,6 +81,7 @@ Assumptions used for...
 >\end{align*}
 >$$
 >To see why $Var[\boldsymbol{\hat \beta}] \propto \frac{1}{n}$, we can write the inverse square matrix term as a sum of vectors:
+>
 >$$\mathbf{X}^T\mathbf{X} = \sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T, \quad \mathbf{x}_i = \begin{bmatrix} 1 \\ x_{1i} \\ \vdots \\ x_{pi} \end{bmatrix}, \quad P = \text{\# of predictors}$$
 >
 >Notice how the larger $n$ is, the more $\mathbf{x}_i \mathbf{x}_i^T$'s are in the summation, in turn making $(\mathbf{X}^T\mathbf{X})^{-1}$ smaller in general. Another way of looking at it is through the Law of Large Numbers (LLN):

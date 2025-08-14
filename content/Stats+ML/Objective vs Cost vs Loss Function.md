@@ -1,6 +1,7 @@
 ---
 title: Objective vs Cost vs Loss Function
-tags:
+tags: 
+created: 2025-08-03
 ---
 ---
 >[!abstract]- Explain Like I'm 5

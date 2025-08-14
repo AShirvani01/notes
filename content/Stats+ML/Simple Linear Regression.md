@@ -2,13 +2,14 @@
 title: Simple Linear Regression
 tags:
   - model
+created: 2025-07-29
 ---
 ---
 >[!abstract]- Explain Like I'm 5
 >We draw a line through a bunch of points to try to see how a predictor $X$ and a response $Y$ are linearly related. The distance from the line to any one data point is called the error or residual since it is how far off we are from the true value. But how do we know which line fits best? Usually, we take each residual, square it, and add them all together to get the **R**esidual **S**um of **S**quares (**RSS**), which tells us how far off our line is *overall*. The best line would be the line with the ***lowest*** RSS. The actual process of finding the best line is called **O**rdinary **L**east **S**quares (**OLS**).
 >
 
->[!faq]+ Motivation
+>[!faq]- Motivation
 >Say we are given a dataset $\{x_i, y_i\}_{i=1}^n$ visualized on a scatterplot: 
 >![[Simple linear regression plot.png|500]] 
 >

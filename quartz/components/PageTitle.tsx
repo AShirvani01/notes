@@ -29,7 +29,7 @@ PageTitle.css = `
   font-family: var(--titleFont);
 }
 .logo {
-  height: 2rem;
+  height: max;
   width: auto;
 }
 @media (max-width: 768px) {
@@ -40,7 +40,7 @@ PageTitle.css = `
   }
   
   .logo {
-    height: 0.5rem;
+    height: 1rem;
     margin-right: 0.5rem;
   }
 }

@@ -2,6 +2,7 @@
 title: Types of Matrices
 tags:
   - linear-algebra
+created: 2025-08-08
 ---
 ---
 ### Symmetric
