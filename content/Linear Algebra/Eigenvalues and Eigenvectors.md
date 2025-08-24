@@ -1,7 +1,6 @@
 ---
 title: Eigenvalues and Eigenvectors
 tags:
-  - linear-algebra
 created: 2025-08-08
 ---
 ---
@@ -27,7 +26,7 @@ $$\mathbf{v}=\text{Eigenvector} \Longleftrightarrow \mathcal{T}(\mathbf{v})=\lam
 >(\mathbf{M}-\lambda\mathbf{I})\mathbf{v} &= \mathbf{0}
 >\end{align*}
 >$$
->If the matrix $(\mathbf{M}-\lambda\mathbf{I})$ was invertible, the only solution would be $\mathbf{v}=(\mathbf{M}-\lambda\mathbf{I})^{-1} \mathbf{0} = \mathbf{0}$, which would normally be ok, but remember the eigenvector must be ***non-zero***. Since invertibility implies a $\mathbf{0}$ solution that is invalid, we must look at the case when it is not invertible (aka [[Types of Matrices#Singular|Singular]]). From the 'Big Theorem', we know that
+>If the matrix $(\mathbf{M}-\lambda\mathbf{I})$ was invertible, the only solution would be $\mathbf{v}=(\mathbf{M}-\lambda\mathbf{I})^{-1} \mathbf{0} = \mathbf{0}$, which would normally be ok, but remember the eigenvector must be ***non-zero***. Since invertibility implies a $\mathbf{0}$ solution that is invalid, we must look at the case when it is not invertible (aka [[Types of Matrices#Singular|Singular]]). From the [[Invertible Matrix Theorem]], we know that
 >
 >$$(\mathbf{M}-\lambda\mathbf{I}) = \text{not invertible} \Longleftrightarrow \text{det}(\mathbf{M}-\lambda\mathbf{I}) = 0$$
 >

@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "My Notebook",
+    pageTitle: "Stuck in Latent Space",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
