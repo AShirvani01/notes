@@ -77,7 +77,9 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
                 created ||= file.data.frontmatter.created as MaybeDate
                 // modified ||= file.data.frontmatter.modified as MaybeDate
                 const st = await fs.promises.stat(fullFp)
-                modified ||= st.mtimeMs
+                if (st.mtimeMs !== st.birthtimeMs) {
+                  modified ||= st.mtimeMs
+                }
                 published ||= file.data.frontmatter.published as MaybeDate
               } else if (source === "git" && repo) {
                 try {
