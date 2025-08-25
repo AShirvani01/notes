@@ -2,6 +2,7 @@
 title: Invertible Matrix Theorem
 tags:
 created: 2025-08-18
+modified: 2025-08-25
 ---
 ---
 Let $\mathbf{M}$ be an $n \times n$ matrix, and let $\mathcal{T}: \mathbb{R}^n \rightarrow \mathbb{R}^n$ be the matrix transformation $T(\mathbf{v}) = \mathbf{Mv}$. The following statements are equivalent:
