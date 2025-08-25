@@ -3,6 +3,7 @@ import { Repository } from "@napi-rs/simple-git"
 import { QuartzTransformerPlugin } from "../types"
 import path from "path"
 import { styleText } from "util"
+import crypto from "crypto"
 
 export interface Options {
   priority: ("frontmatter" | "git" | "filesystem")[]
@@ -38,8 +39,18 @@ function coerceDate(fp: string, d: any): Date {
 }
 
 type MaybeDate = undefined | string | number
+
+async function getFileHash(fp: string): Promise<string> {
+  const hash = crypto.createHash("sha256")
+  const stream = fs.createReadStream(fp)
+  for await (const chunk of stream) hash.update(chunk)
+  return hash.digest("hex")
+}
+
 export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (userOpts) => {
   const opts = { ...defaultOptions, ...userOpts }
+  // internal hash cache to track last known content
+  const lastHashes: Record<string, string> = {}
   return {
     name: "CreatedModifiedDate",
     markdownPlugins(ctx) {
@@ -76,9 +87,12 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
               } else if (source === "frontmatter" && file.data.frontmatter) {
                 created ||= file.data.frontmatter.created as MaybeDate
                 // modified ||= file.data.frontmatter.modified as MaybeDate
+
                 const st = await fs.promises.stat(fullFp)
-                if (st.mtimeMs !== st.birthtimeMs) {
-                  modified ||= st.mtimeMs
+                const newHash = await getFileHash(fullFp)
+                if (newHash !== lastHashes[fullFp]) {
+                  modified = st.mtimeMs
+                  lastHashes[fullFp] = newHash
                 }
                 published ||= file.data.frontmatter.published as MaybeDate
               } else if (source === "git" && repo) {
