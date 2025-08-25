@@ -3,6 +3,7 @@ title: Ordinary Least Squares
 tags:
   - estimation
 created: 2025-08-03
+modified: 2025-08-25
 ---
 ---
 >[!abstract]- Explain Like I'm 5
@@ -10,7 +11,11 @@ created: 2025-08-03
 
 Ordinary Least Squares (OLS) is the standard method for estimating linear regression parameters. The [[Gauss-Markov Theorem]] proves it's the Best Linear Unbiased Estimator (BLUE) when assumptions hold. We define OLS as the following (in vector/matrix notation):
 
-$$\boldsymbol \beta^* = \underset{\boldsymbol \beta}{\arg\!\min} \ \| \boldsymbol{\epsilon} \|_2^2, \quad \boldsymbol\epsilon = \begin{bmatrix} \epsilon_0 \\ \vdots \\ \epsilon_n \end{bmatrix} = \mathbf{y} - \mathbf{X}\boldsymbol\beta$$
+$$
+\begin{align*}
+\boldsymbol \beta^* = \underset{\boldsymbol \beta}{\arg\!\min} \ \| \boldsymbol{\epsilon} \|_2^2, \quad \boldsymbol\epsilon = \begin{bmatrix} \epsilon_0 \\ \vdots \\ \epsilon_n \end{bmatrix} = \mathbf{y} - \mathbf{X}\boldsymbol\beta
+\end{align*}
+$$
 
 You may interpret the optimal model parameter ($\boldsymbol{\beta}^*$) as the $\boldsymbol{\beta}$ that minimizes the Residual Sum of Squares (RSS). 
 
@@ -22,7 +27,11 @@ You may interpret the optimal model parameter ($\boldsymbol{\beta}^*$) as the $\
 >- In ML, you'll tend to see the parameter denoted as $\mathbf{w}$ for 'weight' instead of $\boldsymbol \beta$
 >- For clarity, you may see the the estimation process as a subscript (i.e. $\boldsymbol \beta^*_{OLS}$), however in my experience most of the time it's omitted
 >- Different ways of writing the Residual Sum of Squares (RSS):
->$$\|\boldsymbol \epsilon \|_2^2 = \boldsymbol{\epsilon}^T \boldsymbol{\epsilon} = \sum_{i=1}^n \epsilon_i^2 = \textbf{RSS}$$
+>$$
+>\begin{align*}
+>\textbf{RSS} = \|\boldsymbol \epsilon \|_2^2 = \boldsymbol{\epsilon}^T \boldsymbol{\epsilon} = \sum_{i=1}^n \epsilon_i^2
+>\end{align*}
+>$$
 >- The double bar ($\| \|$)around the $\boldsymbol\epsilon$ denotes a [norm](https://en.wikipedia.org/wiki/Norm_(mathematics)), with the subscript $_2$ specifying that it's an L2 norm (aka Euclidean norm), and the superscript $^2$ being an ordinary square. This notation is fairly common for LASSO and RIDGE regularization terms.
 
 >[!faq] Why take the square?
@@ -32,7 +41,11 @@ You may interpret the optimal model parameter ($\boldsymbol{\beta}^*$) as the $\
 
 With some derivation and rearranging, we get a nice, closed-form solution:
 
-$$\boldsymbol{\hat\beta} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$$
+$$
+\begin{align*}
+\boldsymbol{\hat\beta} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}
+\end{align*}
+$$
 >[!note]- Derivation
 >**Note**: you can do the derivation in scalar form, but it can be written a lot more concisely in vector/matrix notation. Also, there are different ways to arrive at the same answer.
 >
@@ -82,7 +95,11 @@ Assumptions used for...
 >$$
 >To see why $Var[\boldsymbol{\hat \beta}] \propto \frac{1}{n}$, we can write the inverse square matrix term as a sum of vectors:
 >
->$$\mathbf{X}^T\mathbf{X} = \sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T, \quad \mathbf{x}_i = \begin{bmatrix} 1 \\ x_{1i} \\ \vdots \\ x_{pi} \end{bmatrix}, \quad P = \text{\# of predictors}$$
+>$$
+>\begin{align*}
+>\mathbf{X}^T\mathbf{X} = \sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T, \quad \mathbf{x}_i = \begin{bmatrix} 1 \\ x_{1i} \\ \vdots \\ x_{pi} \end{bmatrix}, \quad P = \text{\# of predictors}
+>\end{align*}
+>$$
 >
 >Notice how the larger $n$ is, the more $\mathbf{x}_i \mathbf{x}_i^T$'s are in the summation, in turn making $(\mathbf{X}^T\mathbf{X})^{-1}$ smaller in general. Another way of looking at it is through the Law of Large Numbers (LLN):
 >$$

@@ -1,13 +1,18 @@
 ---
 title: Cramer-Rao Lower Bound
-tags: 
+tags:
 created: 2025-08-11
+modified: 2025-08-25
 ---
 ---
 ### Unbiased
 Say we have $X_1,\dots,X_n \overset{iid}{\sim} p(X;\theta)$ with a fixed, but unknown parameter $\theta$ that we are trying to estimate. The Cramer-Rao Lower Bound (CRLB) gives us the lowest attainable variance for our estimator $\hat \theta$ given that it is unbiased.
 
-$$Var(\hat \theta) \ge \frac{1}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;\theta)}\left[\left(\frac{\partial \ln p(X;\theta)}{\partial \theta}\right)^2\right] = -nE_{X\sim p(X;\theta)}\left[\frac{\partial^2 \ln p(X;\theta)}{\partial \theta^2}\right]   $$
+$$
+\begin{align*}
+Var(\hat \theta) \ge \frac{1}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;\theta)}\left[\left(\frac{\partial \ln p(X;\theta)}{\partial \theta}\right)^2\right] = -nE_{X\sim p(X;\theta)}\left[\frac{\partial^2 \ln p(X;\theta)}{\partial \theta^2}\right]
+\end{align*}
+$$
 >[!danger]- Notation
 >$p(X;\theta)$ : some probability density/mass function of the random variable $X$ parameterized by a fixed $\theta$
 >- The semicolon is usually used in frequentist statistics to distinguish between random and fixed arguments
@@ -19,12 +24,20 @@ $$Var(\hat \theta) \ge \frac{1}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;
 >[!tip] Interpretation
 >Fisher Information measures the curvature of the log-likelihood function (which you may be able to tell from the expectation of the second derivative), so we can interpret the relationship between Fisher Information and the CRLB as the following:
 > 
-> $$I(\theta) \uparrow \Longleftrightarrow \text{Sharper peak on log likelihood} \Longleftrightarrow \text{More confident estimate} \Longleftrightarrow \text{CRLB} \downarrow$$
+> $$
+> \begin{align*}
+> I(\theta) \uparrow \Longleftrightarrow \text{Sharper peak on log likelihood} \Longleftrightarrow \text{More confident estimate} \Longleftrightarrow \text{CRLB} \downarrow
+> \end{align*}
+> $$
 
 ### Biased
 If we are dealing with a biased estimator (i.e. $E[\hat \theta]=\theta + b(\theta)$), we generalize the CRLB as the following:
 
-$$Var(\hat \theta) \ge \frac{|1+b'(\theta)|^2}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;\theta)}\left[\left(\frac{\partial \ln p(X;\theta)}{\partial \theta}\right)^2\right] = -nE_{X\sim p(X;\theta)}\left[\frac{\partial^2 \ln p(X;\theta)}{\partial \theta^2}\right]   $$
+$$
+\begin{align*}
+Var(\hat \theta) \ge \frac{|1+b'(\theta)|^2}{I_n(\theta)}, \quad I_n(\theta) = nE_{X\sim p(X;\theta)}\left[\left(\frac{\partial \ln p(X;\theta)}{\partial \theta}\right)^2\right] = -nE_{X\sim p(X;\theta)}\left[\frac{\partial^2 \ln p(X;\theta)}{\partial \theta^2}\right]
+\end{align*}
+$$
 
 >[!tip] Note
 >- Notice how $\psi(\theta)=\theta$ reduces down to the unbiased case
@@ -64,7 +77,11 @@ $$Var(\hat \theta) \ge \frac{|1+b'(\theta)|^2}{I_n(\theta)}, \quad I_n(\theta) =
 > $$
 > **Using the [Cauchy-Schwarz Inequality](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality#Probability_theory)...**
 > 
-> $$Var[\hat \theta(X)]\cdot Var[S(X;\theta)] \ge |Cov[\hat \theta(X), S(X; \theta)]|^2$$
+> $$
+> \begin{align*}
+> Var[\hat \theta(X)]\cdot Var[S(X;\theta)] \ge |Cov[\hat \theta(X), S(X; \theta)]|^2
+> \end{align*}
+> $$
 > $$
 > \begin{align*}
 > &\text{Unbiased} && \text{Biased} \\
@@ -76,7 +93,11 @@ $$Var(\hat \theta) \ge \frac{|1+b'(\theta)|^2}{I_n(\theta)}, \quad I_n(\theta) =
 
 Efficiency $e(\hat \theta)$ measures how close the unbiased estimator is to the lower bound. 
 
-$$e(\hat \theta) = \frac{I(\theta)^{-1}}{Var(\hat \theta)}, \quad 0 \lt e(\hat \theta) \le 1$$
+$$
+\begin{align*}
+e(\hat \theta) = \frac{I(\theta)^{-1}}{Var(\hat \theta)}, \quad 0 \lt e(\hat \theta) \le 1
+\end{align*}
+$$
 
 Any estimator that achieves the lower bound is said to be ***efficient*** and labelled as a Minimum Variance Unbiased Estimator (MVUE; $e(\hat \theta) = 1$).
 

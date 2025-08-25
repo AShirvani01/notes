@@ -1,7 +1,8 @@
 ---
 title: Bias-Variance Tradeoff
-tags: 
+tags:
 created: 2025-08-11
+modified: 2025-08-25
 ---
 ---
 When it comes to predictive models, there are 2 sources of reducible error: **Bias** and **Variance**.
@@ -33,7 +34,7 @@ MSE can be shown to be a summation of bias, variance, and some irreducible error
 >&= E\left[(f(x)-\hat f(x))^2\right] + \sigma^2  && E[\epsilon]=0, \ E\left[ \epsilon^2 \right] = \sigma^2\\
 >\end{align*}
 >$$
->>[!tip] $E\left[(f(x)-\hat f(x))^2\right] = \text{Bias}^2[\hat f(x)] + \text{Var}[\hat f(x)]$
+>>[!tip]+ $E\left[(f(x)-\hat f(x))^2\right] = \text{Bias}^2[\hat f(x)] + \text{Var}[\hat f(x)]$
 >>$$
 >>\begin{align*}
 >>E\left[(f(x)-\hat f(x))^2\right] &= E\left[(f(x) - E[\hat f(x)] + E[\hat f(x)]-\hat f(x))^2\right] \\

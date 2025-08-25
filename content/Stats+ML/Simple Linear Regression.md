@@ -3,6 +3,7 @@ title: Simple Linear Regression
 tags:
   - model
 created: 2025-07-29
+modified: 2025-08-25
 ---
 ---
 >[!abstract]- Explain Like I'm 5
@@ -18,7 +19,11 @@ created: 2025-07-29
 Linear Regression is arguably the most fundamental type of statistical model that seeks to estimate a linear relationship between predictors and the response. Simple linear regression is a special case where the number of predictors $p=1$.
 ## Model Definition (in scalar form)
 ---
-$$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n$$
+$$
+\begin{align*}
+Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n
+\end{align*}
+$$
 
 - $Y_i$ : the response/outcome/dependent variable (random)
 - $X_i$ : the predictor/covariate/feature/independent variable (random)
@@ -38,7 +43,11 @@ $$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i | X_i \overset{iid}
 
 Given a dataset $\{x_i, y_i\}^n_{i=1}$ we can use the realizations of $X_i$ and apply an expectation to 'remove' the error term from the equation to yield the following:
 
-$$\hat y_i := E[Y_i|X_i = x_i] = \beta_0 + \beta_1 x_i, \quad \forall \ i = 1, \dots, n$$
+$$
+\begin{align*}
+\hat y_i := E[Y_i|X_i = x_i] = \beta_0 + \beta_1 x_i, \quad \forall \ i = 1, \dots, n
+\end{align*}
+$$
 
 which is also referred to as the fitted/predicted values.
 
@@ -46,7 +55,11 @@ which is also referred to as the fitted/predicted values.
 ---
 Now all that's left is estimating the model coefficients, which is commonly done using [[Ordinary Least Squares]] (OLS).
 
-$$\beta_0^*, \beta_1^* = \underset{\beta_0, \ \beta_1}{\arg\!\min} \sum_{i=1}^n \epsilon_i^2, \quad \epsilon_i^2 =  \left[y_i - (\beta_0 + \beta_1 x_i)\right]^2 = [y_i-\hat y_i]^2$$
+$$
+\begin{align*}
+\beta_0^*, \beta_1^* = \underset{\beta_0, \ \beta_1}{\arg\!\min} \sum_{i=1}^n \epsilon_i^2, \quad \epsilon_i^2 =  \left[y_i - (\beta_0 + \beta_1 x_i)\right]^2 = [y_i-\hat y_i]^2
+\end{align*}
+$$
 
 The $\sum_{i=1}^n \epsilon_i^2$ term is commonly referred to as the **R**esidual **S**um of **S**quares (**RSS**). 
 

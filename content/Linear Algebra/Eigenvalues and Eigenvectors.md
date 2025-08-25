@@ -2,11 +2,16 @@
 title: Eigenvalues and Eigenvectors
 tags:
 created: 2025-08-08
+modified: 2025-08-25
 ---
 ---
 An **eigenvector** is a non-zero vector ($\mathbf{v}$) that only changes in magnitude when a linear transformation $\mathcal{T}: \mathbb{R}^n \rightarrow \mathbb{R}^n$ is applied (i.e. after the transformation, the direction should still be the same). The scalar factor by which the magnitude changes is called the **eigenvalue** ($\lambda$). Each eigenvector corresponds to a particular eigenvalue, although the eigenvalues may happen to be the same value.
 
-$$\mathbf{v}=\text{Eigenvector} \Longleftrightarrow \mathcal{T}(\mathbf{v})=\lambda\mathbf{v} \Longleftrightarrow \mathbf{Mv}=\lambda\mathbf{v}, \quad \mathbf{M}= \text{square matrix }$$
+$$
+\begin{align*}
+\mathbf{v}=\text{Eigenvector} \Longleftrightarrow \mathcal{T}(\mathbf{v})=\lambda\mathbf{v} \Longleftrightarrow \mathbf{Mv}=\lambda\mathbf{v}, \quad \mathbf{M}= \text{square matrix }
+\end{align*}
+$$
 
 >[!tip] Note
 >Eigenvectors ***can't*** be $\mathbf{0}$, but eigenvalues ***can*** be 0.
@@ -28,7 +33,11 @@ $$\mathbf{v}=\text{Eigenvector} \Longleftrightarrow \mathcal{T}(\mathbf{v})=\lam
 >$$
 >If the matrix $(\mathbf{M}-\lambda\mathbf{I})$ was invertible, the only solution would be $\mathbf{v}=(\mathbf{M}-\lambda\mathbf{I})^{-1} \mathbf{0} = \mathbf{0}$, which would normally be ok, but remember the eigenvector must be ***non-zero***. Since invertibility implies a $\mathbf{0}$ solution that is invalid, we must look at the case when it is not invertible (aka [[Types of Matrices#Singular|Singular]]). From the [[Invertible Matrix Theorem]], we know that
 >
->$$(\mathbf{M}-\lambda\mathbf{I}) = \text{not invertible} \Longleftrightarrow \text{det}(\mathbf{M}-\lambda\mathbf{I}) = 0$$
+>$$
+>\begin{align*}
+>(\mathbf{M}-\lambda\mathbf{I}) = \text{not invertible} \Longleftrightarrow \text{det}(\mathbf{M}-\lambda\mathbf{I}) = 0
+>\end{align*}
+>$$
 >
 >which we can use to solve for eigenvalue(s) $\lambda$. Then, solving for eigenvector(s) $\mathbf{v}$ is as simple as plugging in the eigenvalue(s) from before.
 

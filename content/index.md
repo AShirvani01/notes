@@ -1,7 +1,9 @@
 ---
 title: Home
 tags:
+modified: 2025-08-25
 ---
+![[content/Assets/banner.svg]]
 
 ## Who am I?
 

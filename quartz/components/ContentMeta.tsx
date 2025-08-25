@@ -38,7 +38,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
           )
         }
 
-        if (fileData.dates.modified) {
+        if (fileData.dates.modified && fileData.dates.created.getTime() !== fileData.dates.modified.getTime()) {
           segments.push(
             <span>
               Modified on <Date date={fileData.dates.modified} />

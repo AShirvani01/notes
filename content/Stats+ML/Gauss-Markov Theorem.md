@@ -1,7 +1,8 @@
 ---
 title: Gauss-Markov Theorem
-tags: 
+tags:
 created: 2025-08-05
+modified: 2025-08-25
 ---
 ---
 The Gauss-Markov theorem proves that the OLS estimator is the Best Linear Unbiased Estimator (BLUE; i.e. lowest possible variance for a linear, unbiased estimator). 
@@ -14,7 +15,11 @@ The Gauss-Markov theorem proves that the OLS estimator is the Best Linear Unbias
 >
 >Let $\boldsymbol{\tilde\beta}$ be another linear unbiased estimator for $\boldsymbol \beta$: 
 >
->$$\boldsymbol{\tilde\beta}:=\mathbf{Cy}, \quad \mathbf{C} = (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{D}, \quad \mathbf{D} = \text{P$\times$n non-zero matrix}$$ 
+>$$
+>\begin{align*}
+>\boldsymbol{\tilde\beta}:=\mathbf{Cy}, \quad \mathbf{C} = (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{D}, \quad \mathbf{D} = \text{P$\times$n non-zero matrix}
+>\end{align*}
+>$$ 
 >
 >Since we're only concerned with unbiased estimators, we must first find the value of $\mathbf{D}$ that makes this newly-defined estimator unbiased:
 >$$
