@@ -2,6 +2,15 @@
 
 // put your custom CSS here!
 
+body[data-slug="index"] img {
+  filter: invert(0%);
+  opacity: 0.85;
+}
+
+img[src*="./Assets/banner.png"] {
+  opacity: 0.8;
+}
+
 [saved-theme="dark"] body[data-slug="index"] img[src*="./Assets/banner.png"] {
   filter: invert(100%);
 }

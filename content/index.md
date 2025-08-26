@@ -3,7 +3,7 @@ title: Home
 tags:
 modified: 2025-08-26
 ---
-<img src="./Assets/banner.png" width="1080" height="212">
+<center><img src="./Assets/banner.png" height="250"></center>
 
 ## Who am I?
 
