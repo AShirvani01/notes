@@ -1,9 +1,9 @@
 ---
 title: Home
 tags:
-modified: 2025-08-25
+modified: 2025-08-26
 ---
-![[content/Assets/banner.svg]]
+<img src="./Assets/banner.png" width="1080" height="212">
 
 ## Who am I?
 

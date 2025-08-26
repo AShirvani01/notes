@@ -1,3 +1,7 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+[saved-theme="dark"] body[data-slug="index"] img[src*="./Assets/banner.png"] {
+  filter: invert(100%);
+}
