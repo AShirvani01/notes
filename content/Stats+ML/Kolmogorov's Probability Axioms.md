@@ -1,7 +1,7 @@
 ---
 title: Kolmogorov's Probability Axioms
 created: 2025-09-13
-modified: 2025-09-14
+modified: 2025-10-04
 ---
 ## Using Expectation
 
