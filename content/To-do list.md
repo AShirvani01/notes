@@ -1,0 +1,74 @@
+---
+title: To-do list
+modified: 2026-02-22
+---
+---
+- [ ] Expectation
+- [ ] Covariance
+- [ ] Correlation
+- [ ] Kolmogorov's Probability axioms
+- [ ] CLT
+- [ ] LLN
+- [ ] Stochastic convergence theorems (Glivenko-Cantelli, Slutsky, Levy)
+- [ ] Monotone/Dominated Convergence theorem
+- [ ] Characteristic functions
+- [ ] Extension theorem
+- [ ] Conditional Expectation (geometry)
+- [ ] Goodness-of-fit tests (Kolmogorov-Smirnov, Shapiro-Wilk, Chi-square)
+- [ ] Rotational/Permutation invariance
+- [ ] Order statistics
+- [ ] Intuition behind commonly used distributions
+
+- [ ] Linear Regression (Frequentist, Bayesian)
+- [ ] Maximum Likelihood Estimation (MAP)
+- [ ] Confidence/credible Intervals
+- [ ] Hypothesis testing
+- [ ] GLMs (Logistic, Poisson)
+- [ ] Exponential families
+- [ ] Shrinkage methods (LASSO/RIDGE)
+- [ ] Bootstrap
+- [ ] Cross-validation
+- [ ] Mixed models
+- [ ] GAMs
+- [ ] GEEs
+
+- [ ] PCA (kernel, probabilistic)
+- [ ] UMAP
+- [ ] t-SNE
+- [ ] Canonical Correlation Analysis
+- [ ] Factor Analysis
+- [ ] Independent Component Analysis
+
+- [ ] Kaplan-Meier estimators
+- [ ] Nelson-Aalen estimators
+- [ ] Accelerated Failure Time Models
+- [ ] Cox Proportional Hazards
+
+- [ ] Markov Chains (stationarity)
+- [ ] ETS models
+- [ ] ARIMA and extensions
+- [ ] ARCH and extensions
+- [ ] State Space models
+- [ ] Hidden Markov models
+- [ ] Spectral Density estimation
+
+- [ ] Optimization Algorithms (GD, mini-batch, SGD, Newton-Raphson, EM)
+- [ ] Hyper-parameter tuning
+- [ ] K-Nearest Neighbours
+- [ ] Discriminant Analysis (Linear, Quadratic)
+- [ ] Support Vector Machines (soft/hard-margin)
+- [ ] Decision Trees
+- [ ] Ensemble methods (Bagging, Boosting; Random Forests, GBDTs)
+- [ ] Graphical models (DAGs, Markov Random Fields)
+- [ ] Graphical model inference (message passing, belief propagation, loopy BP)
+- [ ] Importance/rejection sampling
+- [ ] MCMC methods (Metropolis-Hastings, Gibbs sampling, Hamiltonian MC)
+- [ ] Variational Inference (ELBO, KL-divergence, reparameterization)
+- [ ] Neural Networks
+- [ ] Autoencoders (AE, VAE, Amortized VAE)
+- [ ] Mixture Models (Gaussian)
+- [ ] Gaussian Processes
+- [ ] RAG
+- [ ] Kernels
+- [ ] GANs
+- [ ] Diffusion models

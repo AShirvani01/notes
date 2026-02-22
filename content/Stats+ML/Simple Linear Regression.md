@@ -3,7 +3,7 @@ title: Simple Linear Regression
 tags:
   - model
 created: 2025-07-29
-modified: 2025-08-25
+modified: 2026-02-22
 ---
 ---
 >[!abstract]- Explain Like I'm 5
@@ -21,7 +21,7 @@ Linear Regression is arguably the most fundamental type of statistical model tha
 ---
 $$
 \begin{align*}
-Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n
+Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n
 \end{align*}
 $$
 
@@ -41,7 +41,7 @@ $$
 >[^1]: You may recognize this as $y=mx+b$, with an added error term.
 >[^2]: You may hear this be called an **isotropic gaussian/normal**, since the covariance matrix is a scalar matrix (i.e. diagonals = some scalar, off-diagonals = $0$).
 
-Given a dataset $\{x_i, y_i\}^n_{i=1}$ we can use the realizations of $X_i$ and apply an expectation to 'remove' the error term from the equation to yield the following:
+Given a dataset $\{(x_i, y_i)\}^n_{i=1}$ we can use the realizations of $X_i$ and apply an expectation to 'remove' the error term from the equation to yield the following:
 
 $$
 \begin{align*}
@@ -69,12 +69,12 @@ The $\sum_{i=1}^n \epsilon_i^2$ term is commonly referred to as the **R**esidual
 ## Assumptions
 ---
 You tend to hear/read about 4 major assumptions of Linear regression (in no particular order):
-1. Linearity: $E[\epsilon_i | X_i]=0$
-2. Equal Variance in residuals/Homoscedasticity: $Var[\epsilon_i | X_i]=\sigma^2$
+1. Linearity: $E[\epsilon_i|X_i]=0$
+2. Homoscedasticity (i.e. Equal Variance in residuals): $Var[\epsilon_i | X_i]=\sigma^2$
 3. Independence: $Cov[\epsilon_i, \epsilon_j]=0 \quad \forall \ i \neq j$
-4. Normality: $\epsilon_i | X_i \sim Normal$ (only really affects our OLS estimator p-values and prediction intervals)
+4. Normality: $\epsilon_i \sim Normal$ (only really affects our OLS estimator p-values and prediction intervals)
 
-*Notice how all 4 assumptions are covered by $\epsilon_i | X_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n$
+*Notice how all 4 assumptions are covered by $\epsilon_i \overset{iid}{\sim}N(0,\sigma^2) \quad \forall \ i = 1, \dots, n$
 
 Other assumptions you might hear:
 

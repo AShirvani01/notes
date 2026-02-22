@@ -1,7 +1,7 @@
 ---
 title: Convergence of Random Variables
 created: 2025-10-04
-modified: 2025-10-25
+modified: 2025-10-28
 ---
 ## Types of Convergence
 ---
@@ -34,3 +34,19 @@ X_n \overset{L^p}{\rightarrow} X
 $$
 >[!tip] Special case
 >If $X_n \overset{d}{\rightarrow} c \Longrightarrow X_n \overset{P}{\rightarrow} c$, where $c$ is a constant.
+
+## Algebraic operations
+$$X_n \overset{P}{\rightarrow} X, \quad Y_n \overset{P}{\rightarrow} Y \Longrightarrow \begin{cases} 
+	X_n + Y_n \overset{P}{\rightarrow} X + Y \\ 
+	X_n \cdot Y_n \overset{P}{\rightarrow} X \cdot Y
+\end{cases}
+$$
+$$X_n \overset{L^p}{\rightarrow} X, \quad Y_n \overset{L^p}{\rightarrow} Y \Longrightarrow X_n + Y_n \overset{L^p}{\rightarrow} X + Y$$
+### Slutsky's theorem
+$$X_n \overset{d}{\rightarrow} X, \quad Y_n \overset{P}{\rightarrow} c \Longrightarrow
+\begin{cases}
+	X_n + Y_n \overset{d}{\rightarrow} X + c \\
+	X_n \cdot Y_n \overset{d}{\rightarrow} Xc \\
+	\frac{X_n}{Y_n} \overset{d}{\rightarrow} \frac{X}{c}, & c \ne 0
+\end{cases}
+$$
