@@ -5,7 +5,9 @@
   flex-direction: column;
   overflow-y: hidden;
   min-height: 1.4rem;
-  flex: 0 0.5 auto;
+  box-sizing: border-box;
+  padding-bottom: 1.5rem;
+  flex: 1 1 0;
   &:has(button.toc-header.collapsed) {
     flex: 0 1 1.4rem;
   }
@@ -41,26 +43,58 @@ button.toc-header {
 ul.toc-content.overflow {
   list-style: none;
   position: relative;
-  margin: 0.5rem 0;
+  margin: 0;
   padding: 0;
-  max-height: calc(100% - 2rem);
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: contain;
   list-style: none;
 
-  & > li > a {
-    color: var(--dark);
-    opacity: 0.35;
-    transition:
-      0.5s ease opacity,
-      0.3s ease color;
-    &.in-view {
+  li {
+    position: relative;
+    padding-left: 0.75rem;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--secondary);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.12s ease;
+    }
+    a {
+      display: block;
+      width: 100%;
+      padding: 0.15rem 0.25rem 0.15rem 0rem;
+      box-sizing: border-box;
+      color: var(--dark);
+      opacity: 0.35;
+      transition:
+        0.5s ease opacity,
+        0.3s ease color;
+    }
+    &:has(a:hover)::before,
+    &.in-view::before {
+      transform: scaleY(1);
+    }
+    a:hover {
+      color: var(--secondary);
+    }
+    a.in-view {
       opacity: 0.75;
     }
   }
-
   @for $i from 0 through 6 {
     & .depth-#{$i} {
-      padding-left: calc(1rem * #{$i});
+      padding-left: calc(1rem * #{$i} + 0.75rem);
     }
   }
 }
+
+

@@ -109,6 +109,8 @@ button.desktop-explorer {
 }
 
 .explorer-content {
+  flex: 1 1 auto;
+  min-height: 0;
   list-style: none;
   overflow: hidden;
   overflow-y: auto;
@@ -120,10 +122,41 @@ button.desktop-explorer {
     padding: 0;
     overscroll-behavior: contain;
 
+    & li {
+      position: relative;
+      padding-left: 0.75rem;
+      box-sizing: border-box;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--secondary);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.12s ease;
+      }
+
+      &:has(> a:hover)::before,
+      &:has(> a.active)::before {
+        transform: scaleY(1);
+      }
+    }
+
     & li > a {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      padding: 0.1rem 0.25rem 0.1rem 0.5rem;
       color: var(--dark);
       opacity: 0.75;
       pointer-events: all;
+      overflow-wrap: break-word;
+      word-break: break-word;
 
       &.active {
         opacity: 1;
@@ -142,6 +175,12 @@ button.desktop-explorer {
     grid-template-rows: 1fr;
   }
 
+  // once a folder has finished expanding and is idle, let it participate
+  // in normal scroll chaining instead of clipping/capturing wheel events
+  .folder-outer.settled > ul {
+    overflow: visible;
+  }
+
   .folder-outer > ul {
     overflow: hidden;
     margin-left: 6px;
@@ -151,10 +190,31 @@ button.desktop-explorer {
 }
 
 .folder-container {
+  position: relative;
   flex-direction: row;
   display: flex;
   align-items: center;
   user-select: none;
+  padding-left: 0.75rem;
+  box-sizing: border-box;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--secondary);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.12s ease;
+  }
+
+  &:has(div > a:hover)::before,
+  &:has(div > button:hover)::before {
+    transform: scaleY(1);
+  }
 
   & div > a {
     color: var(--secondary);

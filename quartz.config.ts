@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "ashirvani01.github.io/notes",
-    ignorePatterns: ["**/private", "templates", ".obsidian"],
+    ignorePatterns: ["templates", ".obsidian", "Assets/zi_template.md", "private"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
@@ -68,8 +68,9 @@ const config: QuartzConfig = {
       }),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
+      Plugin.Runnable(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
+      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }), 
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
@@ -78,7 +79,16 @@ const config: QuartzConfig = {
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
-      Plugin.FolderPage(),
+      Plugin.FolderPage({
+  sort: (a, b) => {
+    const titleA = a.title ?? a.slug ?? ""
+    const titleB = b.title ?? b.slug ?? ""
+    return titleA.localeCompare(titleB, undefined, {
+      numeric: true,
+      sensitivity: "base",
+    })
+  },
+}),
       Plugin.TagPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,

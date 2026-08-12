@@ -227,6 +227,8 @@ a {
       padding: $topSpacing 2rem 2rem 2rem;
       display: flex;
       height: 100vh;
+      min-height: 0;
+      overflow-y: hidden;
       position: sticky;
     }
 

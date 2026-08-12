@@ -1,6 +1,6 @@
 ---
 title: To-do list
-modified: 2026-02-22
+modified: 2026-03-02
 ---
 ---
 - [ ] Expectation
@@ -11,6 +11,7 @@ modified: 2026-02-22
 - [ ] LLN
 - [ ] Stochastic convergence theorems (Glivenko-Cantelli, Slutsky, Levy)
 - [ ] Monotone/Dominated Convergence theorem
+- [ ] Radon-Nikodym theorem
 - [ ] Characteristic functions
 - [ ] Extension theorem
 - [ ] Conditional Expectation (geometry)
@@ -18,6 +19,7 @@ modified: 2026-02-22
 - [ ] Rotational/Permutation invariance
 - [ ] Order statistics
 - [ ] Intuition behind commonly used distributions
+- [ ] Sufficiency, ancillary, efficiency, admissibility, consistency
 
 - [ ] Linear Regression (Frequentist, Bayesian)
 - [ ] Maximum Likelihood Estimation (MAP)

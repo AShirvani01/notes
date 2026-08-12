@@ -24,10 +24,17 @@ async function mouseEnterHandler(
     })
   }
 
-  function showPopover(popoverElement: HTMLElement) {
+  // Takes popoverInner explicitly (instead of relying on the enclosing
+  // closure) so this works correctly whether we're showing a freshly
+  // fetched popover or reusing one already cached for this page. Relying on
+  // closure here was the actual bug: on the "reuse cached popover" path,
+  // the closed-over popoverInner variable was never assigned in that
+  // invocation, so the scroll-to-anchor logic below silently failed and the
+  // popover stayed at whatever scroll position a *previous* hover left it.
+  function showPopover(popoverElement: HTMLElement, popoverInner: HTMLElement) {
     clearActivePopover()
     popoverElement.classList.add("active-popover")
-    setPosition(popoverElement as HTMLElement)
+    setPosition(popoverElement)
 
     if (hash !== "") {
       const targetAnchor = `#popover-internal-${hash.slice(1)}`
@@ -35,7 +42,16 @@ async function mouseEnterHandler(
       if (heading) {
         // leave ~12px of buffer when scrolling to a heading
         popoverInner.scroll({ top: heading.offsetTop - 12, behavior: "instant" })
+      } else {
+        // No matching anchor in this popover (e.g. hash points to something
+        // that doesn't exist) — scroll back to the top rather than leaving
+        // whatever scroll position a previous hover left behind.
+        popoverInner.scroll({ top: 0, behavior: "instant" })
       }
+    } else {
+      // No hash at all for this link — always show the top of the page,
+      // same reasoning as above.
+      popoverInner.scroll({ top: 0, behavior: "instant" })
     }
   }
 
@@ -46,10 +62,16 @@ async function mouseEnterHandler(
   const popoverId = `popover-${link.pathname}`
   const prevPopoverElement = document.getElementById(popoverId)
 
-  // dont refetch if there's already a popover
-  if (!!document.getElementById(popoverId)) {
-    showPopover(prevPopoverElement as HTMLElement)
-    return
+  // dont refetch if there's already a popover, but still resolve its inner
+  // content element explicitly and re-run the anchor-scroll logic for
+  // *this* hover's hash, rather than assuming the previous scroll position
+  // is still correct.
+  if (prevPopoverElement) {
+    const prevPopoverInner = prevPopoverElement.querySelector(".popover-inner") as HTMLElement | null
+    if (prevPopoverInner) {
+      showPopover(prevPopoverElement, prevPopoverInner)
+      return
+    }
   }
 
   const response = await fetchCanonical(targetUrl).catch((err) => {
@@ -111,7 +133,7 @@ async function mouseEnterHandler(
     return
   }
 
-  showPopover(popoverElement)
+  showPopover(popoverElement, popoverInner)
 }
 
 function clearActivePopover() {

@@ -1,0 +1,154 @@
+
+@property --fade-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --fade-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --fade-rx {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --fade-ry {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+.space-hero {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto 0 auto;
+  overflow: hidden;
+
+  .hero-textblock {
+    flex: 1 1 240px;
+    min-width: 220px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--dark);
+    opacity: 0;
+    animation: hero-text-fade-in 1.6s ease 0.2s forwards;
+  }
+
+  .hero-subtitle {
+    margin-top: 0.15rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 500;
+    color: var(--gray);
+    opacity: 0;
+    animation: hero-text-fade-in 1.6s ease 0.8s forwards;
+
+    .dot-loader span {
+      opacity: 0;
+    }
+    // dots count up 0 → 1 → 2 → 3, then reset together back to 0 and loop
+    .dot-loader span:nth-child(1) { animation: dot-count-1 2.6s ease-in-out infinite; }
+    .dot-loader span:nth-child(2) { animation: dot-count-2 2.6s ease-in-out infinite; }
+    .dot-loader span:nth-child(3) { animation: dot-count-3 2.6s ease-in-out infinite; }
+  }
+
+  .hero-visual {
+    position: relative;
+    flex: 1 1 320px;
+    max-width: 460px;
+    aspect-ratio: 4 / 2;
+  }
+
+  .hero-photo-frame {
+    position: absolute;
+    inset: 14%;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+  }
+
+  .hero-fade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    --fade-x: 51%;
+    --fade-y: 51%;
+    --fade-rx: 60%;
+    --fade-ry: 69%;
+    background: radial-gradient(
+      ellipse var(--fade-rx) var(--fade-ry) at var(--fade-x) var(--fade-y),
+      transparent 0%,
+      transparent 36%,
+      color-mix(in srgb, var(--light) 20%, transparent) 40%,
+      color-mix(in srgb, var(--light) 45%, transparent) 43%,
+      color-mix(in srgb, var(--light) 70%, transparent) 46%,
+      color-mix(in srgb, var(--light) 90%, transparent) 48%,
+      var(--light) 50%,
+      var(--light) 100%
+    );
+    filter: url(#nebula-warp);
+    animation:
+      mask-expand-in 1.6s cubic-bezier(.57,0,.35,1) 2.4s both,
+      fade-shape 26s linear 4s infinite;
+  }
+}
+
+@keyframes fade-shape {
+  0%, 100% { --fade-rx: 60%; --fade-ry: 69%; }
+  33%      { --fade-rx: 63%; --fade-ry: 71%; }
+  66%      { --fade-rx: 57%; --fade-ry: 67%; }
+}
+
+@keyframes mask-expand-in {
+  from { --fade-rx: 0%; --fade-ry: 0%; }
+  to   { --fade-rx: 60%; --fade-ry: 69%; }
+}
+
+@keyframes hero-text-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dot-count-1 {
+  0%, 8%    { opacity: 0; }
+  12%, 90%  { opacity: 1; }
+  94%, 100% { opacity: 0; }
+}
+@keyframes dot-count-2 {
+  0%, 30%   { opacity: 0; }
+  34%, 90%  { opacity: 1; }
+  94%, 100% { opacity: 0; }
+}
+@keyframes dot-count-3 {
+  0%, 55%   { opacity: 0; }
+  59%, 90%  { opacity: 1; }
+  94%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-hero .hero-fade,
+  .space-hero .hero-title,
+  .space-hero .hero-subtitle,
+  .space-hero .dot-loader span {
+    animation: none !important;
+    opacity: 1 !important;
+    --fade-rx: 50% !important;
+    --fade-ry: 50% !important;
+  }
+}

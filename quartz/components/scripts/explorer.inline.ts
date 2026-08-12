@@ -63,6 +63,22 @@ function toggleFolder(evt: MouseEvent) {
   const isCollapsed = !childFolderContainer.classList.contains("open")
   setFolderState(childFolderContainer, isCollapsed)
 
+  if (!isCollapsed) {
+    // opening: keep overflow:hidden (clipped) until the grid-row
+    // transition finishes, then mark "settled" so scroll passes through
+    childFolderContainer.classList.remove("settled")
+    const onTransitionEnd = (e: TransitionEvent) => {
+      if (e.propertyName !== "grid-template-rows") return
+      childFolderContainer.classList.add("settled")
+      childFolderContainer.removeEventListener("transitionend", onTransitionEnd)
+    }
+    childFolderContainer.addEventListener("transitionend", onTransitionEnd)
+  } else {
+    // closing: reinstate overflow:hidden immediately so the collapse
+    // animation clips correctly
+    childFolderContainer.classList.remove("settled")
+  }
+
   const currentFolderState = currentExplorerState.find(
     (item) => item.path === folderContainer.dataset.folderpath,
   )
@@ -138,6 +154,7 @@ function createFolderNode(
 
   if (!isCollapsed || folderIsPrefixOfCurrentSlug) {
     folderOuter.classList.add("open")
+    folderOuter.classList.add("settled") // no transition happens on initial load, so mark settled immediately
   }
 
   for (const child of node.children) {
@@ -175,6 +192,14 @@ async function setupExplorer(currentSlug: FullSlug) {
     const data = await fetchData
     const entries = [...Object.entries(data)] as [FullSlug, ContentDetails][]
     const trie = FileTrieNode.fromEntries(entries)
+
+    // Root index.md ends up as trie.data instead of a child node — inject it
+    // as a real file node so it sorts and renders alongside everything else
+    if (trie.data) {
+      const indexNode = new FileTrieNode<ContentDetails>(["index"], trie.data)
+      indexNode.displayName = "Home"
+      trie.children.push(indexNode)
+    }
 
     // Apply functions in order
     for (const fn of opts.order) {
@@ -299,3 +324,4 @@ window.addEventListener("resize", function () {
 function setFolderState(folderElement: HTMLElement, collapsed: boolean) {
   return collapsed ? folderElement.classList.remove("open") : folderElement.classList.add("open")
 }
+

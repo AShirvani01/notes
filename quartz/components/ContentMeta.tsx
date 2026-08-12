@@ -15,7 +15,7 @@ interface ContentMetaOptions {
 }
 
 const defaultOptions: ContentMetaOptions = {
-  showReadingTime: true,
+  showReadingTime: false,
   showComma: true,
 }
 
@@ -29,23 +29,23 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
     if (text) {
       const segments: (string | JSX.Element)[] = []
 
-      if (fileData.dates) {
-        if (fileData.dates.created) {
-          segments.push(
-            <span>
-              Created on <Date date={fileData.dates.created} />
-            </span>,
-          )
-        }
+//      if (fileData.dates) {
+//        if (fileData.dates.created) {
+//          segments.push(
+//            <span>
+//              Created on <Date date={fileData.dates.created} />
+//            </span>,
+//          )
+//        }
 
-        if (fileData.dates.modified && fileData.dates.created.getTime() !== fileData.dates.modified.getTime()) {
-          segments.push(
-            <span>
-              Modified on <Date date={fileData.dates.modified} />
-            </span>,
-          )
-        }
-      }
+//        if (fileData.dates.modified && fileData.dates.created.getTime() !== fileData.dates.modified.getTime()) {
+//          segments.push(
+//            <span>
+//              Modified on <Date date={fileData.dates.modified} />
+//            </span>,
+//          )
+//        }
+//      }
 
       // Display reading time if enabled
       if (options.showReadingTime) {
