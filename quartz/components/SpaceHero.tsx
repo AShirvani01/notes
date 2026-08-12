@@ -1,8 +1,11 @@
-import { QuartzComponentConstructor } from "./types"
+import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import { pathToRoot } from "../util/path"
 // @ts-ignore
 import styles from "./styles/spaceHero.scss"
 
-function SpaceHero() {
+function SpaceHero({ fileData }: QuartzComponentProps) {
+  const baseDir = pathToRoot(fileData.slug!)
+
   return (
     <div class="space-hero">
       {/* Hidden defs — turbulence + displacement filter that warps the
@@ -51,8 +54,8 @@ function SpaceHero() {
         <div class="hero-photo-frame">
           <img
             class="hero-img"
-            src="/static/spacedog.jpg"
-            alt="Dog floating in a cardboard box among the stars"
+            src={`${baseDir}/static/spacedog.jpg`}
+            alt="Space Dog"
           />
         </div>
         <div class="hero-fade" aria-hidden="true" />
