@@ -26,6 +26,23 @@ jobs:
           node-version: 22
       - name: Install Dependencies
         run: npm ci
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python dependencies for runnable code blocks
+        run: pip install -r python-packages.txt
+      - name: Install R dependencies for runnable code blocks
+        run: |
+          Rscript -e '
+            pkgs <- readLines("r-packages.txt")
+            pkgs <- pkgs[nzchar(trimws(pkgs))]
+            installed <- rownames(installed.packages())
+            missing <- setdiff(pkgs, installed)
+            if (length(missing) > 0) {
+              install.packages(missing, repos = "https://cloud.r-project.org")
+            }
+          '
       - name: Build Quartz
         run: npx quartz build
       - name: Upload artifact
