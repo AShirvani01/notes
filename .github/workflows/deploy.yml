@@ -32,6 +32,10 @@ jobs:
           python-version: "3.12"
       - name: Install Python dependencies for runnable code blocks
         run: pip install -r python-packages.txt
+      - name: Set up R user library
+        run: |
+          mkdir -p ~/R/library
+          echo "R_LIBS_USER=~/R/library" >> $GITHUB_ENV
       - name: Install R dependencies for runnable code blocks
         run: |
           Rscript -e '
